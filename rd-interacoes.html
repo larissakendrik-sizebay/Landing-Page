@@ -18,20 +18,20 @@
 
   /* =====================================================
      1) BOTÕES: brilho azul, reflexo que passa no hover, pulso suave e seta
-     IDs: #rd-button-moj1k302, #rd-button-mvlcq9fa, #rd-button-joq3m2m7, #rd-button-mvled5pw
+     Vale para TODOS os botões do RD (ids que começam com rd-button-), inclusive os que você criar depois
      (visual do botão do Figma: degradê azul-claro > lavanda > rosa-claro, texto azul-marinho)
      Para usar em outro botão qualquer, adicione a classe sbz-btn
      ===================================================== */
 /* wrapper (quando o ID está numa div em volta do botão): sem fundo próprio */
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):not(a):not(button){
+[id^="rd-button-"]:not(a):not(button){
   background:transparent !important;
   box-shadow:none !important;
   border:0 !important;
 }
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw),
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw),
+[id^="rd-button-"] a,
+[id^="rd-button-"] button,
+a[id^="rd-button-"],
+button[id^="rd-button-"],
 .sbz-btn{
   position:relative !important;
   isolation:isolate;
@@ -64,10 +64,10 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button
   animation:sbz-pulse 2.8s ease-out infinite;
 }
 /* tudo que o RD colocar dentro do botão (span, texto...) herda o rosa e a cor, sem fundo próprio */
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a *,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button *,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) *,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) *,
+[id^="rd-button-"] a *,
+[id^="rd-button-"] button *,
+a[id^="rd-button-"] *,
+button[id^="rd-button-"] *,
 .sbz-btn *{
   background:none !important;
   background-color:transparent !important;
@@ -81,20 +81,20 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button
   text-decoration:none !important;
   display:inline !important;
 }
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a *::before,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button *::before,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) *::before,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) *::before,
+[id^="rd-button-"] a *::before,
+[id^="rd-button-"] button *::before,
+a[id^="rd-button-"] *::before,
+button[id^="rd-button-"] *::before,
 .sbz-btn *::before,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a *::after,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button *::after,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) *::after,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) *::after,
+[id^="rd-button-"] a *::after,
+[id^="rd-button-"] button *::after,
+a[id^="rd-button-"] *::after,
+button[id^="rd-button-"] *::after,
 .sbz-btn *::after{display:none !important}
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a::before,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button::before,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw)::before,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw)::before,
+[id^="rd-button-"] a::before,
+[id^="rd-button-"] button::before,
+a[id^="rd-button-"]::before,
+button[id^="rd-button-"]::before,
 .sbz-btn::before{
   content:"" !important;
   position:absolute !important;
@@ -108,10 +108,10 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button
   pointer-events:none;
   z-index:1;
 }
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a::after,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button::after,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw)::after,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw)::after,
+[id^="rd-button-"] a::after,
+[id^="rd-button-"] button::after,
+a[id^="rd-button-"]::after,
+button[id^="rd-button-"]::after,
 .sbz-btn::after{
   content:"\2192" !important;
   position:static !important;
@@ -121,35 +121,35 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button
   color:inherit !important;
   transition:transform .3s ease;
 }
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a:hover,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button:hover,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):hover,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):hover,
+[id^="rd-button-"] a:hover,
+[id^="rd-button-"] button:hover,
+a[id^="rd-button-"]:hover,
+button[id^="rd-button-"]:hover,
 .sbz-btn:hover{
   transform:translateY(-3px) !important;
   filter:brightness(1.03);
   box-shadow:0 10px 44px rgba(33,105,155,.75),inset 0 0 0 1px rgba(255,255,255,.85),0 0 0 4px rgba(236,196,215,.55) !important;
   animation-play-state:paused;
 }
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a:hover::before,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button:hover::before,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):hover::before,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):hover::before,
+[id^="rd-button-"] a:hover::before,
+[id^="rd-button-"] button:hover::before,
+a[id^="rd-button-"]:hover::before,
+button[id^="rd-button-"]:hover::before,
 .sbz-btn:hover::before{left:130%}
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a:hover::after,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button:hover::after,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):hover::after,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):hover::after,
+[id^="rd-button-"] a:hover::after,
+[id^="rd-button-"] button:hover::after,
+a[id^="rd-button-"]:hover::after,
+button[id^="rd-button-"]:hover::after,
 .sbz-btn:hover::after{transform:translateX(5px)}
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a:active,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button:active,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):active,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):active,
+[id^="rd-button-"] a:active,
+[id^="rd-button-"] button:active,
+a[id^="rd-button-"]:active,
+button[id^="rd-button-"]:active,
 .sbz-btn:active{transform:translateY(0) scale(.97) !important}
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a:focus-visible,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button:focus-visible,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):focus-visible,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):focus-visible,
+[id^="rd-button-"] a:focus-visible,
+[id^="rd-button-"] button:focus-visible,
+a[id^="rd-button-"]:focus-visible,
+button[id^="rd-button-"]:focus-visible,
 .sbz-btn:focus-visible{outline:3px solid var(--sbz-blue);outline-offset:3px}
 /* botão do formulário ocupa a largura toda */
 #rd-button-joq3m2m7 a,#rd-button-joq3m2m7 button,a#rd-button-joq3m2m7,button#rd-button-joq3m2m7{display:flex !important;width:100% !important}
@@ -160,10 +160,10 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button
     100%{box-shadow:0 4px 32px rgba(33,105,155,.5),inset 0 0 0 1px rgba(255,255,255,.7),0 0 0 0 rgba(132,196,241,0)}
   }
   @media (max-width:768px){
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw),
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw),
+[id^="rd-button-"] a,
+[id^="rd-button-"] button,
+a[id^="rd-button-"],
+button[id^="rd-button-"],
 .sbz-btn{font-size:17px !important;padding:18px 36px !important}
   }
 
