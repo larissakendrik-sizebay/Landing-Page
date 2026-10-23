@@ -18,20 +18,20 @@
 
   /* =====================================================
      1) BOTÕES: brilho azul, reflexo que passa no hover, pulso suave e seta
-     IDs: #rd-button-moj1k302, #rd-button-mvlcq9fa, #rd-button-joq3m2m7
+     IDs: #rd-button-moj1k302, #rd-button-mvlcq9fa, #rd-button-joq3m2m7, #rd-button-mvled5pw
      (visual do botão do Figma: degradê azul-claro > lavanda > rosa-claro, texto azul-marinho)
      Para usar em outro botão qualquer, adicione a classe sbz-btn
      ===================================================== */
 /* wrapper (quando o ID está numa div em volta do botão): sem fundo próprio */
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):not(a):not(button){
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):not(a):not(button){
   background:transparent !important;
   box-shadow:none !important;
   border:0 !important;
 }
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7),
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7),
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button,
+a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw),
+button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw),
 .sbz-btn{
   position:relative !important;
   isolation:isolate;
@@ -64,10 +64,10 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7),
   animation:sbz-pulse 2.8s ease-out infinite;
 }
 /* tudo que o RD colocar dentro do botão (span, texto...) herda o rosa e a cor, sem fundo próprio */
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a *,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button *,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) *,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) *,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a *,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button *,
+a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) *,
+button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) *,
 .sbz-btn *{
   background:none !important;
   background-color:transparent !important;
@@ -81,20 +81,20 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) *,
   text-decoration:none !important;
   display:inline !important;
 }
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a *::before,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button *::before,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) *::before,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) *::before,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a *::before,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button *::before,
+a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) *::before,
+button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) *::before,
 .sbz-btn *::before,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a *::after,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button *::after,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) *::after,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) *::after,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a *::after,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button *::after,
+a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) *::after,
+button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) *::after,
 .sbz-btn *::after{display:none !important}
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a::before,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button::before,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7)::before,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7)::before,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a::before,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button::before,
+a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw)::before,
+button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw)::before,
 .sbz-btn::before{
   content:"" !important;
   position:absolute !important;
@@ -108,10 +108,10 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7)::before,
   pointer-events:none;
   z-index:1;
 }
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a::after,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button::after,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7)::after,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7)::after,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a::after,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button::after,
+a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw)::after,
+button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw)::after,
 .sbz-btn::after{
   content:"\2192" !important;
   position:static !important;
@@ -121,35 +121,35 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7)::after,
   color:inherit !important;
   transition:transform .3s ease;
 }
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a:hover,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button:hover,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):hover,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):hover,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a:hover,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button:hover,
+a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):hover,
+button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):hover,
 .sbz-btn:hover{
   transform:translateY(-3px) !important;
   filter:brightness(1.03);
   box-shadow:0 10px 44px rgba(33,105,155,.75),inset 0 0 0 1px rgba(255,255,255,.85),0 0 0 4px rgba(236,196,215,.55) !important;
   animation-play-state:paused;
 }
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a:hover::before,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button:hover::before,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):hover::before,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):hover::before,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a:hover::before,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button:hover::before,
+a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):hover::before,
+button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):hover::before,
 .sbz-btn:hover::before{left:130%}
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a:hover::after,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button:hover::after,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):hover::after,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):hover::after,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a:hover::after,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button:hover::after,
+a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):hover::after,
+button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):hover::after,
 .sbz-btn:hover::after{transform:translateX(5px)}
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a:active,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button:active,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):active,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):active,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a:active,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button:active,
+a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):active,
+button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):active,
 .sbz-btn:active{transform:translateY(0) scale(.97) !important}
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a:focus-visible,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button:focus-visible,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):focus-visible,
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):focus-visible,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a:focus-visible,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button:focus-visible,
+a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):focus-visible,
+button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw):focus-visible,
 .sbz-btn:focus-visible{outline:3px solid var(--sbz-blue);outline-offset:3px}
 /* botão do formulário ocupa a largura toda */
 #rd-button-joq3m2m7 a,#rd-button-joq3m2m7 button,a#rd-button-joq3m2m7,button#rd-button-joq3m2m7{display:flex !important;width:100% !important}
@@ -160,10 +160,10 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):focus-vis
     100%{box-shadow:0 4px 32px rgba(33,105,155,.5),inset 0 0 0 1px rgba(255,255,255,.7),0 0 0 0 rgba(132,196,241,0)}
   }
   @media (max-width:768px){
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a,
-:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button,
-a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7),
-button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7),
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) a,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw) button,
+a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw),
+button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7,#rd-button-mvled5pw),
 .sbz-btn{font-size:17px !important;padding:18px 36px !important}
   }
 
@@ -279,6 +279,10 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7),
     ];
     var EXTRA=[];
     var TAGS='h1,h2,h3,h4,h5,h6,p,img,video';
+    /* componentes do RD que recebem a entrada (textos, imagens, títulos, vídeos e botões) */
+    var COMP='[id^="rd-text-"],[id^="rd-image-"],[id^="rd-title-"],[id^="rd-video-"],[id^="rd-button-"]';
+    /* blocos que já têm animação própria: não mexemos neles nem no que está dentro deles */
+    var OWN='.sbz-hero,.sbz-logos,.sbz-cards,.sbz-stats,.sbz-alert';
     /* elementos que NÃO recebem a animação de entrada (adicione a classe sbz-nofx em qualquer elemento para excluí-lo) */
     var SKIP='a,button,form,.sbz-logos,.sbz-hero,#rd-box-joq3m2m2,#rd-text-mvld7qs3,.sbz-nofx';
     var CARDS=[].concat.apply([],CARD_GROUPS).join(',');
@@ -312,11 +316,17 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7),
         els.forEach(function(el,i){add(el,i*90,true);});
       });
       EXTRA.forEach(function(sel){get(sel).forEach(function(el){add(el,0,false);});});
-      get(TAGS).forEach(function(el){
-        if(el.closest(CARDS)||el.closest(SKIP))return;
-        if(el.parentElement&&el.parentElement.closest('picture,figure'))return;
-        add(el,null,false);
+      var auto=get(COMP+','+TAGS).filter(function(el){
+        if(el.closest(CARDS)||el.closest(SKIP)||el.closest(OWN))return false;
+        if(el.matches(COMP)&&el.querySelector(OWN))return false;
+        if(el.matches('[id^="rd-button-"]')&&/^(A|BUTTON)$/.test(el.tagName))return false;
+        if(el.parentElement&&el.parentElement.closest('picture,figure'))return false;
+        return true;
       });
+      /* só o elemento mais externo de cada grupo (evita animar o texto e o container dele ao mesmo tempo) */
+      auto.filter(function(el){
+        return !auto.some(function(o){return o!==el&&o.contains(el);});
+      }).forEach(function(el){add(el,null,false);});
 
       items.forEach(function(it){it.el.classList.add(it.card?'sbz-fx':'sbz-rv');});
       if(reduce||!('IntersectionObserver' in window))return;
