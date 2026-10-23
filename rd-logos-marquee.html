@@ -168,16 +168,24 @@
 </section>
 
 <script>
-  /* Faz a faixa ocupar 100% da largura da tela, mesmo que o bloco do RD esteja dentro de um container com margem/largura máxima */
+  /* Faz a faixa ocupar a largura total da página (a mesma do hero/seções vizinhas),
+     mesmo que o bloco do RD esteja dentro de colunas com margem ou padding. */
   (function(){
     var el=document.currentScript.previousElementSibling;
     if(!el||!el.classList.contains('sbz-logos'))return;
     function fit(){
       el.style.marginLeft='0';
       el.style.width='auto';
-      var left=el.getBoundingClientRect().left;
-      el.style.marginLeft=(-left)+'px';
-      el.style.width=document.documentElement.clientWidth+'px';
+      var r=el.getBoundingClientRect();
+      var best=null,p=el.parentElement;
+      while(p&&p!==document.body&&p!==document.documentElement){
+        var pr=p.getBoundingClientRect();
+        if(!best||pr.width>best.width+0.5)best={left:pr.left,width:pr.width};
+        p=p.parentElement;
+      }
+      if(!best||best.width<=r.width+0.5)best={left:0,width:document.documentElement.clientWidth};
+      el.style.marginLeft=(best.left-r.left)+'px';
+      el.style.width=best.width+'px';
     }
     fit();
     window.addEventListener('resize',fit);
