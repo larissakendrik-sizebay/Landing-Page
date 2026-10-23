@@ -1,0 +1,48 @@
+<!-- ===== Banner de alerta "Esto se traduce en carritos abandonados..." (Sizebay) – colar em um bloco HTML do RD Station ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  .sbz-alert{
+    --sbz-alert-bg:#042a44;
+    --sbz-alert-text:#ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:17px;
+    width:100%;
+    max-width:1084px;
+    margin:0 auto;
+    padding:22px 58px;
+    background:var(--sbz-alert-bg);
+    border-radius:21px;
+    box-sizing:border-box;
+    font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  }
+  .sbz-alert *{box-sizing:border-box}
+  .sbz-alert__icon{
+    flex:0 0 auto;
+    display:block;
+    width:185px;
+    height:auto;
+  }
+  .sbz-alert__text{
+    margin:0;
+    max-width:766px;
+    font-size:22px;
+    line-height:1.5;
+    font-weight:700;
+    color:var(--sbz-alert-text);
+  }
+  @media (max-width:768px){
+    .sbz-alert{flex-direction:column;text-align:center;gap:8px;padding:24px 20px}
+    .sbz-alert__icon{width:110px}
+  }
+</style>
+
+<div class="sbz-alert">
+  <!-- Troque o src pela URL da imagem do ícone (exportar do Figma: "circulo-azul-com-icone-3d-de-ponto-de-exclamacao") -->
+  <img class="sbz-alert__icon" src="COLE_AQUI_A_URL_DA_IMAGEM" alt="" width="185" height="184">
+  <p class="sbz-alert__text">Esto se traduce en carritos abandonados y devoluciones. Hoy, hasta el 30% de los consumidores abandonan la compra por dudas con la talla.</p>
+</div>
