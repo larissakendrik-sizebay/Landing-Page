@@ -21,6 +21,8 @@
   .sbz-hero *{box-sizing:border-box}
   .sbz-hero__photo{
     position:absolute;inset:0;
+    z-index:1;                       /* na frente do card do produto, atrás dos outros dois */
+    pointer-events:none;
     width:100%;height:100%;
     object-fit:contain;
     display:block;
