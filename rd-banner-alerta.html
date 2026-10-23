@@ -12,8 +12,8 @@
     justify-content:center;
     gap:17px;
     width:100%;
-    max-width:1084px;
-    margin:0 auto;
+    max-width:none;
+    margin:0;
     padding:22px 58px;
     background:var(--sbz-alert-bg);
     border-radius:21px;
@@ -30,7 +30,7 @@
   .sbz-alert__text{
     margin:0;
     max-width:766px;
-    font-size:22px;
+    font-size:28px;
     line-height:1.5;
     font-weight:700;
     color:var(--sbz-alert-text);
@@ -38,6 +38,7 @@
   @media (max-width:768px){
     .sbz-alert{flex-direction:column;text-align:center;gap:8px;padding:24px 20px}
     .sbz-alert__icon{width:110px}
+    .sbz-alert__text{font-size:20px}
   }
 </style>
 
