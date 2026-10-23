@@ -114,6 +114,7 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):focus-vis
 #rd-box-mvlbnr70,#rd-box-mvlbpz3b,#rd-box-mvlbss5b,#rd-box-mvlbss5f,#rd-box-mvlct2bs,#rd-box-mvlcul25,#rd-box-mvlcum4l,.sbz-cards__card,.sbz-stats__card,.sbz-alert{
   transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease;
 }
+.sbz-rv{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
 .sbz-pre{opacity:0;transform:translateY(28px)}
 .sbz-ready{transition:transform .3s ease,box-shadow .3s ease !important;transition-delay:0s !important}
 .sbz-fx:hover{
@@ -190,17 +191,24 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):focus-vis
 </style>
 
 <script>
-  /* Entrada dos cards ao rolar a página + contagem dos números.
+  /* Entrada ao rolar a página (fade + subida) em títulos, textos, imagens e vídeos,
+     além dos cards (que também têm hover) e da contagem dos números.
      Se este script for bloqueado pelo RD, tudo continua visível (só perde a animação de entrada). */
   (function(){
     var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var groups=[
+    var CARD_GROUPS=[
       ["#rd-box-mvlbnr70", "#rd-box-mvlbpz3b", "#rd-box-mvlbss5b", "#rd-box-mvlbss5f"],
       ["#rd-box-mvlct2bs", "#rd-box-mvlcul25", "#rd-box-mvlcum4l"],
       ['.sbz-cards__card'],
       ['.sbz-stats__card'],
       ['.sbz-alert']
     ];
+    /* Também animados na entrada (sem hover): o formulário e os elementos abaixo */
+    var EXTRA=['#rd-box-joq3m2m2'];
+    var TAGS='h1,h2,h3,h4,h5,h6,p,img,video';
+    var SKIP='a,button,form,.sbz-logos,#rd-box-joq3m2m2,.sbz-nofx';
+    var CARDS=[].concat.apply([],CARD_GROUPS).join(',');
+
     function get(sel){return Array.prototype.slice.call(document.querySelectorAll(sel));}
     function count(el){
       var txt=(el.getAttribute('data-sbz')||el.textContent).trim();
@@ -218,27 +226,46 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):focus-vis
       requestAnimationFrame(step);
     }
     function init(){
-      var items=[];
-      groups.forEach(function(g){
+      var items=[],seen=[];
+      function add(el,delay,card){
+        if(seen.indexOf(el)>-1)return;
+        seen.push(el);
+        items.push({el:el,delay:delay,card:card});
+      }
+      /* cards: escalonados dentro do grupo */
+      CARD_GROUPS.forEach(function(g){
         var els=[];
         g.forEach(function(sel){els=els.concat(get(sel));});
-        els.forEach(function(el,i){items.push({el:el,delay:i*90});});
+        els.forEach(function(el,i){add(el,i*90,true);});
       });
-      items.forEach(function(it){it.el.classList.add('sbz-fx');});
+      /* demais elementos: títulos, textos, imagens e vídeos fora de cards, botões e formulário */
+      EXTRA.forEach(function(sel){get(sel).forEach(function(el){add(el,0,false);});});
+      get(TAGS).forEach(function(el){
+        if(el.closest(CARDS)||el.closest(SKIP))return;
+        if(el.parentElement&&el.parentElement.closest('picture,figure'))return;
+        add(el,null,false);
+      });
+
+      items.forEach(function(it){
+        it.el.classList.add(it.card?'sbz-fx':'sbz-rv');
+      });
       if(reduce||!('IntersectionObserver' in window))return;
       items.forEach(function(it){it.el.classList.add('sbz-pre');});
+
       var io=new IntersectionObserver(function(entries){
+        var k=0;
         entries.forEach(function(en){
           if(!en.isIntersecting)return;
           var it=items.filter(function(x){return x.el===en.target;})[0];
           io.unobserve(en.target);
-          en.target.style.transitionDelay=it.delay+'ms';
+          var delay=it.delay;
+          if(delay===null){delay=Math.min(k,5)*90;k++;}
+          en.target.style.transitionDelay=delay+'ms';
           en.target.classList.remove('sbz-pre');
           Array.prototype.forEach.call(en.target.querySelectorAll('.sbz-stats__number'),count);
-          if(en.target.classList.contains('sbz-stats__number'))count(en.target);
-          setTimeout(function(){en.target.style.transitionDelay='';en.target.classList.add('sbz-ready');},it.delay+800);
+          setTimeout(function(){en.target.style.transitionDelay='';en.target.classList.add('sbz-ready');},delay+800);
         });
-      },{threshold:.15});
+      },{threshold:.12});
       items.forEach(function(it){io.observe(it.el);});
     }
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
