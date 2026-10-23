@@ -17,57 +17,104 @@
   ::selection{background:var(--sbz-pink-1);color:var(--sbz-navy)}
 
   /* =====================================================
-     1) BOTÕES (rosa Sizebay): brilho que passa, pulso suave e seta
+     1) BOTÕES (rosa Sizebay): contraste no azul e no branco, brilho que passa, pulso suave e seta
      IDs: #rd-button-moj1k302, #rd-button-mvlcq9fa, #rd-button-joq3m2m7
      Para usar em outro botão qualquer, adicione a classe sbz-btn
      ===================================================== */
+/* wrapper (quando o ID está numa div em volta do botão): sem fundo próprio */
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):not(a):not(button){
+  background:transparent !important;
+  box-shadow:none !important;
+  border:0 !important;
+}
 :is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a,
 :is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button,
 a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7),
 button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7),
 .sbz-btn{
   position:relative !important;
+  isolation:isolate;
   display:inline-flex !important;
+  flex-direction:row !important;
+  flex-wrap:nowrap !important;
   align-items:center !important;
   justify-content:center !important;
   overflow:hidden !important;
-  background:linear-gradient(135deg,var(--sbz-pink-1) 0%,var(--sbz-pink-2) 55%,var(--sbz-pink-3) 100%) !important;
-  color:var(--sbz-navy) !important;
+  white-space:nowrap !important;
+  padding:16px 40px !important;
+  background-color:#ec8fae !important;
+  background-image:linear-gradient(135deg,#f7b9cc 0%,#ec8fae 55%,#de6f96 100%) !important;
+  color:#042a44 !important;
   font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif !important;
+  font-size:18px !important;
   font-weight:600 !important;
+  line-height:1.2 !important;
+  letter-spacing:0 !important;
+  text-transform:none !important;
+  text-decoration:none !important;
   border:0 !important;
   border-radius:999px !important;
-  text-decoration:none !important;
   cursor:pointer;
-  box-shadow:0 8px 24px rgba(224,130,159,.42),0 0 0 0 rgba(236,159,184,.55) !important;
+  box-shadow:0 8px 24px rgba(222,111,150,.45),inset 0 0 0 1.5px rgba(255,255,255,.55),0 0 0 0 rgba(236,143,174,.55) !important;
   transition:transform .25s ease,box-shadow .25s ease,filter .25s ease !important;
   animation:sbz-pulse 2.8s ease-out infinite;
 }
+/* tudo que o RD colocar dentro do botão (span, texto...) herda o rosa e a cor, sem fundo próprio */
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a *,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button *,
+a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) *,
+button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) *,
+.sbz-btn *{
+  background:none !important;
+  background-color:transparent !important;
+  box-shadow:none !important;
+  border:0 !important;
+  padding:0 !important;
+  margin:0 !important;
+  color:inherit !important;
+  font:inherit !important;
+  text-shadow:none !important;
+  text-decoration:none !important;
+  display:inline !important;
+}
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a *::before,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button *::before,
+a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) *::before,
+button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) *::before,
+.sbz-btn *::before,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a *::after,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button *::after,
+a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) *::after,
+button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) *::after,
+.sbz-btn *::after{display:none !important}
 :is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a::before,
 :is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button::before,
 a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7)::before,
 button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7)::before,
 .sbz-btn::before{
-  content:"";
-  position:absolute;
+  content:"" !important;
+  position:absolute !important;
   top:0;
   left:-80%;
   width:45%;
   height:100%;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,.75),transparent);
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.75),transparent) !important;
   transform:skewX(-20deg);
   transition:left .7s ease;
   pointer-events:none;
+  z-index:1;
 }
 :is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a::after,
 :is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button::after,
 a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7)::after,
 button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7)::after,
 .sbz-btn::after{
-  content:"\2192";
-  display:inline-block;
-  margin-left:10px;
-  font-weight:600;
+  content:"\2192" !important;
+  position:static !important;
+  display:inline-block !important;
+  margin-left:10px !important;
+  font-weight:600 !important;
+  color:inherit !important;
   transition:transform .3s ease;
 }
 :is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a:hover,
@@ -76,8 +123,8 @@ a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):hover,
 button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):hover,
 .sbz-btn:hover{
   transform:translateY(-3px) !important;
-  filter:saturate(1.08);
-  box-shadow:0 14px 34px rgba(224,130,159,.6),0 0 0 4px rgba(249,205,217,.45) !important;
+  filter:saturate(1.08) brightness(1.03);
+  box-shadow:0 14px 34px rgba(222,111,150,.62),inset 0 0 0 1.5px rgba(255,255,255,.7),0 0 0 4px rgba(247,185,204,.45) !important;
   animation-play-state:paused;
 }
 :is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a:hover::before,
@@ -100,26 +147,42 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):active,
 a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):focus-visible,
 button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):focus-visible,
 .sbz-btn:focus-visible{outline:3px solid var(--sbz-blue);outline-offset:3px}
+/* botão do formulário ocupa a largura toda */
+#rd-button-joq3m2m7 a,#rd-button-joq3m2m7 button,a#rd-button-joq3m2m7,button#rd-button-joq3m2m7{display:flex !important;width:100% !important}
 
   @keyframes sbz-pulse{
-    0%{box-shadow:0 8px 24px rgba(224,130,159,.42),0 0 0 0 rgba(236,159,184,.55)}
-    70%{box-shadow:0 8px 24px rgba(224,130,159,.42),0 0 0 16px rgba(236,159,184,0)}
-    100%{box-shadow:0 8px 24px rgba(224,130,159,.42),0 0 0 0 rgba(236,159,184,0)}
+    0%{box-shadow:0 8px 24px rgba(222,111,150,.45),inset 0 0 0 1.5px rgba(255,255,255,.55),0 0 0 0 rgba(236,143,174,.55)}
+    70%{box-shadow:0 8px 24px rgba(222,111,150,.45),inset 0 0 0 1.5px rgba(255,255,255,.55),0 0 0 16px rgba(236,143,174,0)}
+    100%{box-shadow:0 8px 24px rgba(222,111,150,.45),inset 0 0 0 1.5px rgba(255,255,255,.55),0 0 0 0 rgba(236,143,174,0)}
+  }
+  @media (max-width:768px){
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) a,
+:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7) button,
+a:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7),
+button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7),
+.sbz-btn{font-size:16px !important;padding:14px 28px !important}
   }
 
   /* =====================================================
      2) CARDS: entram suavemente e sobem ao passar o mouse
         (cards do RD pelos IDs + blocos HTML .sbz-cards, .sbz-stats e .sbz-alert)
      ===================================================== */
-#rd-box-mvlbnr70,#rd-box-mvlbpz3b,#rd-box-mvlbss5b,#rd-box-mvlbss5f,#rd-box-mvlct2bs,#rd-box-mvlcul25,#rd-box-mvlcum4l,.sbz-cards__card,.sbz-stats__card,.sbz-alert{
+#rd-box-mvlbnr70,#rd-box-mvlbpz3b,#rd-box-mvlbss5b,#rd-box-mvlbss5f,#rd-box-mvlct2bs,#rd-box-mvlcul25,#rd-box-mvlcum4l,#rd-image-mvlczhfm,.sbz-cards__card,.sbz-stats__card,.sbz-alert{
   transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease;
 }
 .sbz-rv{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
 .sbz-pre{opacity:0;transform:translateY(28px)}
-.sbz-ready{transition:transform .3s ease,box-shadow .3s ease !important;transition-delay:0s !important}
+.sbz-ready{transition:transform .3s ease,box-shadow .3s ease,filter .3s ease !important;transition-delay:0s !important}
 .sbz-fx:hover{
   transform:translateY(-6px);
   box-shadow:0 18px 40px rgba(4,42,68,.18);
+}
+/* imagem: salta igual aos cards, com sombra que acompanha o contorno (funciona com PNG transparente) */
+#rd-image-mvlczhfm{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1),filter .3s ease}
+#rd-image-mvlczhfm.sbz-fx:hover{
+  transform:translateY(-6px);
+  box-shadow:none;
+  filter:drop-shadow(0 18px 22px rgba(4,42,68,.28));
 }
 
   /* =====================================================
@@ -192,21 +255,22 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):focus-vis
 
 <script>
   /* Entrada ao rolar a página (fade + subida) em títulos, textos, imagens e vídeos,
-     além dos cards (que também têm hover) e da contagem dos números.
+     além dos cards/imagem (que também têm hover) e da contagem dos números.
      Se este script for bloqueado pelo RD, tudo continua visível (só perde a animação de entrada). */
   (function(){
     var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var CARD_GROUPS=[
       ["#rd-box-mvlbnr70", "#rd-box-mvlbpz3b", "#rd-box-mvlbss5b", "#rd-box-mvlbss5f"],
       ["#rd-box-mvlct2bs", "#rd-box-mvlcul25", "#rd-box-mvlcum4l"],
+      ['#rd-image-mvlczhfm'],
       ['.sbz-cards__card'],
       ['.sbz-stats__card'],
       ['.sbz-alert']
     ];
-    /* Também animados na entrada (sem hover): o formulário e os elementos abaixo */
     var EXTRA=['#rd-box-joq3m2m2'];
     var TAGS='h1,h2,h3,h4,h5,h6,p,img,video';
-    var SKIP='a,button,form,.sbz-logos,#rd-box-joq3m2m2,.sbz-nofx';
+    /* elementos que NÃO recebem a animação de entrada (adicione a classe sbz-nofx em qualquer elemento para excluí-lo) */
+    var SKIP='a,button,form,.sbz-logos,#rd-box-joq3m2m2,#rd-text-mvld7qs3,.sbz-nofx';
     var CARDS=[].concat.apply([],CARD_GROUPS).join(',');
 
     function get(sel){return Array.prototype.slice.call(document.querySelectorAll(sel));}
@@ -230,15 +294,13 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):focus-vis
       function add(el,delay,card){
         if(seen.indexOf(el)>-1)return;
         seen.push(el);
-        items.push({el:el,delay:delay,card:card});
+        items.push({el:el,delay:delay,card:card,done:false});
       }
-      /* cards: escalonados dentro do grupo */
       CARD_GROUPS.forEach(function(g){
         var els=[];
         g.forEach(function(sel){els=els.concat(get(sel));});
         els.forEach(function(el,i){add(el,i*90,true);});
       });
-      /* demais elementos: títulos, textos, imagens e vídeos fora de cards, botões e formulário */
       EXTRA.forEach(function(sel){get(sel).forEach(function(el){add(el,0,false);});});
       get(TAGS).forEach(function(el){
         if(el.closest(CARDS)||el.closest(SKIP))return;
@@ -246,27 +308,48 @@ button:is(#rd-button-moj1k302,#rd-button-mvlcq9fa,#rd-button-joq3m2m7):focus-vis
         add(el,null,false);
       });
 
-      items.forEach(function(it){
-        it.el.classList.add(it.card?'sbz-fx':'sbz-rv');
-      });
+      items.forEach(function(it){it.el.classList.add(it.card?'sbz-fx':'sbz-rv');});
       if(reduce||!('IntersectionObserver' in window))return;
       items.forEach(function(it){it.el.classList.add('sbz-pre');});
 
+      var batch=0;
+      function reveal(it){
+        if(it.done)return;
+        it.done=true;
+        if(io)io.unobserve(it.el);
+        var delay=it.delay;
+        if(delay===null){delay=Math.min(batch,5)*90;batch++;}
+        it.el.style.transitionDelay=delay+'ms';
+        it.el.classList.remove('sbz-pre');
+        Array.prototype.forEach.call(it.el.querySelectorAll('.sbz-stats__number'),count);
+        setTimeout(function(){it.el.style.transitionDelay='';it.el.classList.add('sbz-ready');},delay+800);
+      }
       var io=new IntersectionObserver(function(entries){
-        var k=0;
+        batch=0;
         entries.forEach(function(en){
           if(!en.isIntersecting)return;
-          var it=items.filter(function(x){return x.el===en.target;})[0];
-          io.unobserve(en.target);
-          var delay=it.delay;
-          if(delay===null){delay=Math.min(k,5)*90;k++;}
-          en.target.style.transitionDelay=delay+'ms';
-          en.target.classList.remove('sbz-pre');
-          Array.prototype.forEach.call(en.target.querySelectorAll('.sbz-stats__number'),count);
-          setTimeout(function(){en.target.style.transitionDelay='';en.target.classList.add('sbz-ready');},delay+800);
+          reveal(items.filter(function(x){return x.el===en.target;})[0]);
         });
       },{threshold:.12});
       items.forEach(function(it){io.observe(it.el);});
+
+      /* Garantia: se o navegador não avisar que o elemento apareceu (ex.: ele está dentro de um
+         container cortado), revelamos pela posição na tela. Nada fica escondido. */
+      var tick=false;
+      function sweep(){
+        tick=false;batch=0;
+        items.forEach(function(it){
+          if(it.done)return;
+          var r=it.el.getBoundingClientRect();
+          if(r.bottom>0&&r.top<window.innerHeight*.92)reveal(it);
+        });
+      }
+      function schedule(){if(!tick){tick=true;requestAnimationFrame(sweep);}}
+      window.addEventListener('scroll',schedule,{passive:true});
+      window.addEventListener('resize',schedule);
+      window.addEventListener('load',schedule);
+      setTimeout(sweep,1200);
+      setTimeout(sweep,3500);
     }
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
   })();
