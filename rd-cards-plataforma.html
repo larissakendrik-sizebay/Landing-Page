@@ -1,0 +1,81 @@
+<!-- ===== Cards "Probador Virtual / Vitrina virtual" (Sizebay) – colar em um bloco HTML do RD Station ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  .sbz-cards{
+    --sbz-card-bg:#d2ecff;
+    --sbz-text:#07385a;
+    --sbz-icon:#2f82bc;
+    --sbz-radius:21px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    width:100%;
+    max-width:515px;
+    box-sizing:border-box;
+    font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  }
+  .sbz-cards *{box-sizing:border-box}
+  .sbz-cards__card{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:22px 24px;
+    background:var(--sbz-card-bg);
+    border-radius:var(--sbz-radius);
+  }
+  .sbz-cards__icon{
+    flex:0 0 80px;
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--sbz-icon);
+  }
+  .sbz-cards__icon svg{display:block;width:36px;height:auto;fill:currentColor}
+  .sbz-cards__icon svg.is-bag{width:34px}
+  .sbz-cards__text{
+    margin:0;
+    font-size:22px;
+    line-height:1.5;
+    font-weight:700;
+    color:var(--sbz-text);
+  }
+  @media (max-width:768px){
+    .sbz-cards{max-width:none}
+    .sbz-cards__card{gap:14px;padding:16px 18px}
+    .sbz-cards__icon{flex-basis:64px;width:64px;height:64px}
+    .sbz-cards__icon svg{width:28px}
+    .sbz-cards__icon svg.is-bag{width:27px}
+    .sbz-cards__text{font-size:18px}
+  }
+</style>
+
+<div class="sbz-cards">
+
+  <div class="sbz-cards__card">
+    <div class="sbz-cards__icon" aria-hidden="true">
+      <svg viewBox="0 0 36 36" focusable="false">
+        <path d="M18.75 9.58337C18.75 8.89302 19.3097 8.33337 20 8.33337H26.25C26.9404 8.33337 27.5 8.89302 27.5 9.58337V15.8334C27.5 16.5237 26.9404 17.0834 26.25 17.0834C25.5597 17.0834 25 16.5237 25 15.8334V12.6011L12.6011 25H15.8334C16.5237 25 17.0834 25.5597 17.0834 26.25C17.0834 26.9404 16.5237 27.5 15.8334 27.5H9.58337C8.89302 27.5 8.33337 26.9404 8.33337 26.25V20C8.33337 19.3097 8.89302 18.75 9.58337 18.75C10.2737 18.75 10.8334 19.3097 10.8334 20V23.2322L23.2322 10.8334H20C19.3097 10.8334 18.75 10.2737 18.75 9.58337Z"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.821 2.41977e-07C13.9737 -1.64247e-05 10.9587 -3.31551e-05 8.60618 0.31625C6.19828 0.639984 4.29825 1.31555 2.8069 2.8069C1.31555 4.29825 0.639984 6.19828 0.31625 8.60618C-3.31551e-05 10.9587 -1.64247e-05 13.9737 2.41977e-07 17.821V18.0123C-1.64247e-05 21.8597 -3.31551e-05 24.8747 0.31625 27.2272C0.639984 29.635 1.31555 31.5352 2.8069 33.0265C4.29825 34.5178 6.19828 35.1933 8.60618 35.5172C10.9587 35.8333 13.9737 35.8333 17.821 35.8333H18.0123C21.8597 35.8333 24.8747 35.8333 27.2272 35.5172C29.635 35.1933 31.5352 34.5178 33.0265 33.0265C34.5178 31.5352 35.1933 29.635 35.5172 27.2272C35.8333 24.8747 35.8333 21.8597 35.8333 18.0123V17.821C35.8333 13.9737 35.8333 10.9587 35.5172 8.60618C35.1933 6.19828 34.5178 4.29825 33.0265 2.8069C31.5352 1.31555 29.635 0.639984 27.2272 0.31625C24.8747 -3.31551e-05 21.8597 -1.64247e-05 18.0123 2.41977e-07H17.821ZM4.57467 4.57467C5.52408 3.62523 6.80862 3.08042 8.9393 2.79395C11.1059 2.50265 13.953 2.5 17.9167 2.5C21.8803 2.5 24.7273 2.50265 26.894 2.79395C29.0247 3.08042 30.3092 3.62523 31.2587 4.57467C32.2082 5.52408 32.753 6.80862 33.0393 8.9393C33.3307 11.1059 33.3333 13.953 33.3333 17.9167C33.3333 21.8803 33.3307 24.7273 33.0393 26.894C32.753 29.0247 32.2082 30.3092 31.2587 31.2587C30.3092 32.2082 29.0247 32.753 26.894 33.0393C24.7273 33.3307 21.8803 33.3333 17.9167 33.3333C13.953 33.3333 11.1059 33.3307 8.9393 33.0393C6.80862 32.753 5.52408 32.2082 4.57467 31.2587C3.62523 30.3092 3.08042 29.0247 2.79395 26.894C2.50265 24.7273 2.5 21.8803 2.5 17.9167C2.5 13.953 2.50265 11.1059 2.79395 8.9393C3.08042 6.80862 3.62523 5.52408 4.57467 4.57467Z"/>
+      </svg>
+    </div>
+    <p class="sbz-cards__text">Probador Virtual con recomendación de talla</p>
+  </div>
+
+  <div class="sbz-cards__card">
+    <div class="sbz-cards__icon" aria-hidden="true">
+      <svg class="is-bag" viewBox="0 0 35 40" focusable="false">
+        <path d="M23.4375 15.3125C22.5745 15.3125 21.875 16.012 21.875 16.875C21.875 19.4597 19.7722 21.5625 17.1875 21.5625C14.6028 21.5625 12.5 19.4597 12.5 16.875C12.5 16.012 11.8005 15.3125 10.9375 15.3125C10.0745 15.3125 9.375 16.012 9.375 16.875C9.375 21.1828 12.8797 24.6875 17.1875 24.6875C21.4954 24.6875 25 21.1828 25 16.875C25 16.012 24.3005 15.3125 23.4375 15.3125Z"/>
+        <path d="M34.3377 34.7201L31.2373 10.4272C31.138 9.64844 30.4644 9.0625 29.6875 9.0625H25V7.8125C25 3.50469 21.4954 0 17.1875 0C12.8797 0 9.375 3.50469 9.375 7.8125V9.0625H4.6875C3.89422 9.0625 3.23531 9.66109 3.13758 10.4272L0.0369531 34.7225C0.0124218 34.917 0 35.1155 0 35.3125C0 37.8972 2.10281 40 4.6875 40H29.6875C32.2722 40 34.375 37.8972 34.375 35.3125C34.375 35.1158 34.3626 34.9174 34.3377 34.7201ZM12.5 7.8125C12.5 5.22781 14.6028 3.125 17.1875 3.125C19.7722 3.125 21.875 5.22781 21.875 7.8125V9.0625H12.5V7.8125ZM29.6875 36.875H4.6875C3.82594 36.875 3.125 36.1741 3.125 35.3125C3.125 35.2457 3.12922 35.1787 3.13711 35.1157L6.06328 12.1875H28.3117L31.2375 35.1128C31.2457 35.1784 31.2499 35.2456 31.2499 35.3125C31.25 36.1741 30.5491 36.875 29.6875 36.875Z"/>
+      </svg>
+    </div>
+    <p class="sbz-cards__text">Vitrina virtual con descubrimiento y recomendación de productos</p>
+  </div>
+
+</div>
