@@ -4,6 +4,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 
 <style>
+  .sbz-cards-wrap{
+    container-type:inline-size;   /* reage à largura do próprio bloco, não só da tela */
+    display:flow-root;            /* a margem de baixo fica dentro do bloco (o RD não a corta) */
+    width:100%;
+  }
   .sbz-cards{
     --sbz-card-bg:#d2ecff;
     --sbz-text:#07385a;
@@ -47,6 +52,14 @@
     color:var(--sbz-text);
     text-wrap:balance;
   }
+  @container (max-width:700px){
+    .sbz-cards{max-width:none;margin-bottom:40px}
+    .sbz-cards__card{gap:14px;padding:16px 18px}
+    .sbz-cards__icon{flex-basis:64px;width:64px;height:64px}
+    .sbz-cards__icon svg{width:28px}
+    .sbz-cards__icon svg.is-bag{width:27px}
+    .sbz-cards__text{font-size:18px}
+  }
   @media (max-width:768px){
     .sbz-cards{max-width:none;margin-bottom:40px}
     .sbz-cards__card{gap:14px;padding:16px 18px}
@@ -57,6 +70,7 @@
   }
 </style>
 
+<div class="sbz-cards-wrap">
 <div class="sbz-cards">
 
   <div class="sbz-cards__card">
@@ -79,4 +93,5 @@
     <p class="sbz-cards__text">Vitrina virtual con descubrimiento y recomendación de productos</p>
   </div>
 
+</div>
 </div>
