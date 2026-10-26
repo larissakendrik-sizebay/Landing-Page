@@ -4,13 +4,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 
 <style>
+  .sbz-alert-wrap{
+    container-type:inline-size;   /* o banner reage à largura do próprio bloco, não só da tela */
+    width:100%;
+  }
   .sbz-alert{
     --sbz-alert-bg:#042a44;
     --sbz-alert-text:#ffffff;
     display:flex;
+    flex-wrap:wrap;               /* se não couber lado a lado, o texto desce para baixo da imagem */
     align-items:center;
     justify-content:center;
-    gap:17px;
+    column-gap:17px;
+    row-gap:8px;
     width:100%;
     max-width:1196px;
     margin:0 auto;
@@ -29,20 +35,30 @@
   }
   .sbz-alert__text{
     margin:0;
+    flex:1 1 360px;
     max-width:766px;
     font-size:28px;
     line-height:1.5;
     font-weight:700;
     color:var(--sbz-alert-text);
   }
-  @media (max-width:768px){
-    .sbz-alert{flex-direction:column;text-align:center;gap:8px;padding:24px 20px}
+
+  /* MOBILE: imagem em cima, texto embaixo, tudo centralizado */
+  @container (max-width:700px){
+    .sbz-alert{padding:24px 20px;text-align:center}
     .sbz-alert__icon{width:110px}
-    .sbz-alert__text{font-size:20px}
+    .sbz-alert__text{flex-basis:100%;font-size:20px}
+  }
+  @media (max-width:768px){
+    .sbz-alert{padding:24px 20px;text-align:center}
+    .sbz-alert__icon{width:110px}
+    .sbz-alert__text{flex-basis:100%;font-size:20px}
   }
 </style>
 
-<div class="sbz-alert">
-  <img class="sbz-alert__icon" src="https://d335luupugsy2.cloudfront.net/cms/files/933370/1792779401/$v0mfa14mqd" alt="" width="185" height="184">
-  <p class="sbz-alert__text">Esto se traduce en carritos abandonados y devoluciones. Hoy, hasta el 30% de los consumidores abandonan la compra por dudas con la talla.</p>
+<div class="sbz-alert-wrap">
+  <div class="sbz-alert">
+    <img class="sbz-alert__icon" src="https://d335luupugsy2.cloudfront.net/cms/files/933370/1792779401/$v0mfa14mqd" alt="" width="185" height="184">
+    <p class="sbz-alert__text">Esto se traduce en carritos abandonados y devoluciones. Hoy, hasta el 30% de los consumidores abandonan la compra por dudas con la talla.</p>
+  </div>
 </div>
