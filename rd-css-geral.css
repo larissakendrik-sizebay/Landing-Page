@@ -85,9 +85,6 @@ body{
   .sbz-stagger > :nth-child(3){animation-range:entry 16% entry 56%}
   .sbz-stagger > :nth-child(4){animation-range:entry 24% entry 64%}
   .sbz-stagger > :nth-child(n+5){animation-range:entry 32% entry 72%}
-
-  /* a primeira seção (topo da página) já nasce visível, sem piscar */
-  [id^="rd-section-"]:first-of-type{animation:none}
 }
 
 /* evita barra de rolagem horizontal causada pelas entradas laterais */
