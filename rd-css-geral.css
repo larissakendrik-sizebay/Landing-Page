@@ -1,0 +1,104 @@
+/* =====================================================================
+   Sizebay – CSS GERAL da página (RD Station)
+   Onde colar: campo de CSS geral da página no RD Station (sem tags <style>).
+   Contém: 1) fonte Outfit padrão  2) entrada das seções ao rolar a página
+   ===================================================================== */
+
+/* ---------- 1) FONTE: Outfit (Google Fonts) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root{
+  --sbz-font:'Outfit',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+
+  /* cores da identidade (Redesign Site) – use nos blocos HTML com var(--sbz-...) */
+  --sbz-text:#434a50;
+  --sbz-text-2:#555555;
+  --sbz-muted:#8a8a8a;
+  --sbz-blue:#4299d7;
+  --sbz-blue-2:#5eafe8;
+  --sbz-blue-3:#a8d8fa;
+  --sbz-blue-4:#e6f4ff;
+  --sbz-bg:#f0f4f7;
+  --sbz-purple:#786faf;
+  --sbz-dark:#272727;
+
+  /* ajustes da animação de entrada das seções */
+  --sbz-reveal-distance:40px;      /* quanto a seção sobe ao aparecer */
+}
+
+/* Outfit em tudo (menos ícones). O !important vence o estilo de fonte que o RD coloca nos componentes. */
+html,body,
+body :where(div,section,header,footer,nav,main,article,aside,
+            h1,h2,h3,h4,h5,h6,p,span,a,strong,em,small,li,ul,ol,
+            label,input,select,textarea,button,td,th,blockquote):not(i):not([class*="icon"]):not([class*="fa-"]){
+  font-family:var(--sbz-font) !important;
+}
+body{
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+}
+
+/* ---------- 2) SEÇÕES APARECENDO CONFORME A ROLAGEM ----------
+   100% CSS (scroll-driven animations): sem JavaScript.
+   Funciona em Chrome, Edge e Safari recentes. Em navegador sem suporte (ex.: Firefox),
+   as seções simplesmente aparecem normais, nada fica escondido.
+
+   Quem recebe a animação:
+   - seções do RD  -> [id^="rd-section-"]
+   - blocos HTML   -> adicione a classe  sbz-section  no elemento raiz do bloco
+   Para NÃO animar algo: adicione a classe  sbz-no-reveal
+   Variações (adicione a classe no elemento): sbz-from-left | sbz-from-right | sbz-zoom
+   Escalonar filhos (um depois do outro): classe  sbz-stagger  no container
+*/
+@keyframes sbz-reveal{
+  from{opacity:0;transform:translate3d(0,var(--sbz-reveal-distance),0)}
+  to  {opacity:1;transform:none}
+}
+@keyframes sbz-reveal-left{
+  from{opacity:0;transform:translate3d(calc(var(--sbz-reveal-distance) * -1.5),0,0)}
+  to  {opacity:1;transform:none}
+}
+@keyframes sbz-reveal-right{
+  from{opacity:0;transform:translate3d(calc(var(--sbz-reveal-distance) * 1.5),0,0)}
+  to  {opacity:1;transform:none}
+}
+@keyframes sbz-reveal-zoom{
+  from{opacity:0;transform:scale(.94)}
+  to  {opacity:1;transform:none}
+}
+
+@supports (animation-timeline:view()){
+  [id^="rd-section-"]:not(.sbz-no-reveal),
+  .sbz-section:not(.sbz-no-reveal),
+  .sbz-stagger > *{
+    animation:sbz-reveal linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 40%;   /* termina de aparecer quando 40% da seção já entrou na tela */
+  }
+  .sbz-from-left:not(.sbz-no-reveal) {animation-name:sbz-reveal-left}
+  .sbz-from-right:not(.sbz-no-reveal){animation-name:sbz-reveal-right}
+  .sbz-zoom:not(.sbz-no-reveal)      {animation-name:sbz-reveal-zoom}
+
+  /* escalonado: cada filho começa um pouco depois do anterior */
+  .sbz-stagger > :nth-child(2){animation-range:entry 8% entry 48%}
+  .sbz-stagger > :nth-child(3){animation-range:entry 16% entry 56%}
+  .sbz-stagger > :nth-child(4){animation-range:entry 24% entry 64%}
+  .sbz-stagger > :nth-child(n+5){animation-range:entry 32% entry 72%}
+
+  /* a primeira seção (topo da página) já nasce visível, sem piscar */
+  [id^="rd-section-"]:first-of-type{animation:none}
+}
+
+/* evita barra de rolagem horizontal causada pelas entradas laterais */
+html{overflow-x:clip}
+body{overflow-x:clip}
+
+/* ---------- 3) ACESSIBILIDADE ---------- */
+@media (prefers-reduced-motion:reduce){
+  [id^="rd-section-"],.sbz-section,.sbz-stagger > *{
+    animation:none !important;
+    opacity:1 !important;
+    transform:none !important;
+  }
+}

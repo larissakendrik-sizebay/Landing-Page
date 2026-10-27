@@ -11,6 +11,7 @@ Blocos HTML/CSS/JS independentes usados na landing page da Sizebay. Cada arquivo
 | `rd-cards-plataforma.html` | Cards "Probador Virtual / Vitrina virtual" |
 | `rd-banner-alerta.html` | Banner de alerta sobre carrinhos abandonados |
 | `rd-logos-marquee.html` | Faixa animada de logos de clientes |
+| `rd-css-geral.css` | **CSS geral da página** (campo de CSS do RD): fonte Outfit, tokens de cor e animação de entrada das seções ao rolar (CSS puro) |
 | `rd-interacoes.html` | CSS + JS global (botões `rd-button-*`, animações de entrada). Colar **uma vez, no fim da página** |
 
 ## Como usar
