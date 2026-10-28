@@ -110,11 +110,13 @@ Quando a seção ou o botão foi criado direto no RD, não criamos HTML: damos o
 1. Pegar o **ID** do elemento no RD (painel "Dados do elemento": ex. `#rd-box-mvs6dotd`) e a classe (ex. `.rd-box`, `.rd-button`).
 2. Ler o frame no Figma para ver as medidas do efeito (cor, opacidade, raio).
 3. Escrever o CSS mirando o ID (um elemento) ou a classe (todos do tipo). Usar `!important` onde o RD já define o mesmo estilo.
-4. Testar numa página de exemplo e enviar o arquivo `.css` clicável.
+4. Testar numa página de exemplo, adicionar ao `rd-edicao-avancada.css` e enviar o arquivo inteiro, clicável.
 
-Exemplos prontos:
-- `rd-glass-cta.css`: efeito de vidro no card do CTA final (`#rd-box-mvs6dotd`): fundo branco 80%, `backdrop-filter` de desfoque, borda clara, raio de 22px e sombra. O desfoque só aparece se o card for translúcido. Há um fundo mais opaco de reserva para navegadores sem suporte.
-- `rd-botoes-hover.css`: hover **suave** em todos os botões `.rd-button`: o tom da cor clareia um pouco (`brightness`), surge uma sombra discreta e um brilho fraco e lento atravessa o botão. Sem crescer nem pular. A primeira versão, com subida de 4px e zoom, foi considerada forte demais.
+**Regra: um único arquivo de CSS.** Todo o CSS da aba é mantido em `rd-edicao-avancada.css`, organizado em seções numeradas. Quando houver um ajuste ou um item novo, atualizamos esse arquivo e **enviamos o arquivo inteiro**, para copiar e colar tudo de uma vez na aba CSS (substituindo o que já estava lá).
+
+Seções atuais:
+- Seção 1, efeito de vidro: efeito de vidro no card do CTA final (`#rd-box-mvs6dotd`): fundo branco 80%, `backdrop-filter` de desfoque, borda clara, raio de 22px e sombra. O desfoque só aparece se o card for translúcido. Há um fundo mais opaco de reserva para navegadores sem suporte.
+- Seção 2, hover dos botões: hover **suave** em todos os botões `.rd-button`: o tom da cor clareia um pouco (`brightness`), surge uma sombra discreta e um brilho fraco e lento atravessa o botão. Sem crescer nem pular. A primeira versão, com subida de 4px e zoom, foi considerada forte demais.
 
 Cuidado: o `rd-interacoes.html` também estiliza `rd-button-` (visual rosa com seta). Usar só um dos dois na mesma página.
 
@@ -129,8 +131,7 @@ Cuidado: o `rd-interacoes.html` também estiliza `rd-button-` (visual rosa com s
 | `rd-passos.html` | Passos 01-02-03, com o tracinho que vai surgindo (para fundo escuro) |
 | `rd-perfis.html` | Perfis 01-02-03 em tons de azul |
 | `rd-animacao-entrada.html` | Script de entrada ao rolar, para a página toda (JS em BODY) |
-| `rd-glass-cta.css` | Efeito vidro no card do CTA final (aba CSS) |
-| `rd-botoes-hover.css` | Hover suave nos botões `.rd-button` (aba CSS) |
+| `rd-edicao-avancada.css` | CSS único da aba CSS: vidro no CTA final + hover suave nos botões `.rd-button` |
 
 ## Lições aprendidas
 
@@ -140,3 +141,4 @@ Cuidado: o `rd-interacoes.html` também estiliza `rd-button-` (visual rosa com s
 - Sempre enviar o arquivo clicável no chat depois de criar ou alterar um bloco.
 - Animações: começar suave. Movimento forte (subir, dar zoom) costuma ser rejeitado; preferir leve mudança de tom, sombra discreta e brilho lento.
 - Elementos criados no RD: personalizar por CSS na aba Edição Avançada, mirando o ID ou a classe do elemento, em vez de recriar em HTML.
+- CSS da aba Edição Avançada: sempre enviar o arquivo completo (`rd-edicao-avancada.css`), nunca só o trecho novo.
