@@ -1,0 +1,92 @@
+<!-- ===== Animação de entrada ao rolar a página (Sizebay) =====
+     Onde colar: Edição Avançada > aba "Javascript em BODY" (cole o bloco <script> inteiro abaixo).
+     Não precisa de CSS nem de mexer em cada elemento: o script encontra sozinho os textos, títulos, imagens, vídeos,
+     botões e cards do RD, e também os blocos HTML da Sizebay (sbz-...), e faz cada um aparecer (fade + subida)
+     quando entra na tela, com um pequeno atraso entre os que aparecem juntos.
+
+     Para NÃO animar um elemento específico: adicione a classe  sbz-nofx  nele (no RD: Avançado > Classe CSS).
+     Se o script for bloqueado ou der erro, nada fica escondido (a página aparece normal, só sem a animação).
+     Se você também usa o rd-interacoes.html, ele já faz a entrada dos mesmos elementos: use só um dos dois. -->
+<script>
+(function(){
+  if(window.__sbzEntrada)return;
+  window.__sbzEntrada=true;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce||!('IntersectionObserver' in window)||!Element.prototype.animate)return;
+
+  /* o que recebe a animação */
+  var COMP=[
+    '[id^="rd-text-"]','[id^="rd-title-"]','[id^="rd-image-"]','[id^="rd-video-"]','[id^="rd-button-"]','[id^="rd-box-"]',
+    /* blocos HTML da Sizebay: cada card/etapa entra um depois do outro */
+    '.sbz-nd__hero','.sbz-nd__card','.sbz-bn__card','.sbz-pf3__card','.sbz-sol__card','.sbz-ps__step',
+    '.sbz-cards__card','.sbz-stats__card','.sbz-alert'
+  ].join(',');
+  /* o que nunca recebe (ou já tem animação própria) */
+  var SKIP='a,button,form,header,nav,footer a,.sbz-nofx,.sbz-pf,.sbz-hero,.sbz-logos,[id^="rd-header"],[id^="rd-navbar"]';
+
+  function isStyledBox(el){
+    /* "rd-box" só vira card animado se tiver fundo, borda ou sombra; caixa só de layout não: animamos o que há dentro */
+    if(!/^rd-box-/.test(el.id||''))return true;
+    var cs=getComputedStyle(el);
+    var bg=cs.backgroundColor,hasBg=bg&&bg!=='rgba(0, 0, 0, 0)'&&bg!=='transparent';
+    var hasImg=cs.backgroundImage&&cs.backgroundImage!=='none';
+    var hasShadow=cs.boxShadow&&cs.boxShadow!=='none';
+    var hasBorder=parseFloat(cs.borderTopWidth)>0&&cs.borderTopStyle!=='none';
+    return !!(hasBg||hasImg||hasShadow||hasBorder);
+  }
+
+  function init(){
+    var all=[].slice.call(document.querySelectorAll(COMP)).filter(function(el){
+      if(el.closest(SKIP))return false;
+      if(el.matches('[id^="rd-button-"]')&&/^(A|BUTTON)$/.test(el.tagName))return false;
+      var pos=getComputedStyle(el).position;
+      if(pos==='fixed'||pos==='sticky')return false;
+      return isStyledBox(el);
+    });
+    /* só o elemento mais externo de cada grupo (não anima o card e o texto dentro dele ao mesmo tempo),
+       exceto os cards/etapas dos blocos sbz, que entram um a um */
+    var items=all.filter(function(el){
+      return !all.some(function(o){return o!==el&&o.contains(el)&&!o.matches('.sbz-ps__step,.sbz-nd__card,.sbz-bn__card,.sbz-pf3__card,.sbz-sol__card');});
+    });
+
+    items.forEach(function(el){el.__sbzDone=false;el.style.opacity='0';});
+
+    var batch=0;
+    function reveal(el){
+      if(el.__sbzDone)return;
+      el.__sbzDone=true;
+      if(io)io.unobserve(el);
+      var delay=Math.min(batch,5)*90;batch++;
+      el.style.opacity='';
+      el.animate(
+        [{opacity:0,transform:'translateY(28px)'},{opacity:1,transform:'none'}],
+        {duration:700,delay:delay,easing:'cubic-bezier(.2,.7,.2,1)',fill:'backwards'}
+      );
+    }
+    var io=new IntersectionObserver(function(entries){
+      batch=0;
+      entries.forEach(function(en){if(en.isIntersecting)reveal(en.target);});
+    },{threshold:.12});
+    items.forEach(function(el){io.observe(el);});
+
+    /* garantia: se o navegador não avisar que o elemento apareceu, revelamos pela posição na tela. Nada fica escondido. */
+    var tick=false;
+    function sweep(){
+      tick=false;batch=0;
+      items.forEach(function(el){
+        if(el.__sbzDone)return;
+        var r=el.getBoundingClientRect();
+        if(r.height>0&&r.bottom>0&&r.top<window.innerHeight*.92)reveal(el);
+      });
+    }
+    function schedule(){if(!tick){tick=true;requestAnimationFrame(sweep);}}
+    window.addEventListener('scroll',schedule,{passive:true});
+    window.addEventListener('resize',schedule);
+    window.addEventListener('load',schedule);
+    setTimeout(sweep,1200);
+    setTimeout(sweep,3500);
+    setTimeout(function(){items.forEach(function(el){if(!el.__sbzDone){var r=el.getBoundingClientRect();if(r.bottom>0&&r.top<window.innerHeight)reveal(el);}});},6000);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
