@@ -1,0 +1,135 @@
+<!-- ===== Destaque "1.200+ lojas" + cards Integração / Tecnologia Fashion (Sizebay) – colar em um bloco HTML do RD Station ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  .sbz-nd-wrap{
+    container-type:inline-size;   /* reage à largura do próprio bloco, não só da tela */
+    display:flow-root;            /* a margem de baixo fica dentro do bloco (o RD não a corta) */
+    width:100%;
+  }
+  .sbz-nd{
+    --sbz-blue:#4299d7;
+    --sbz-blue-50:#e6f4ff;
+    --sbz-icon:#2f82bc;
+    --sbz-title:#434a50;
+    --sbz-body:#555555;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    width:100%;
+    max-width:547px;
+    margin:0 auto;
+    box-sizing:border-box;
+    font-family:'Outfit',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  }
+  .sbz-nd *{box-sizing:border-box}
+
+  /* ---------- destaque 1.200+ ---------- */
+  .sbz-nd__hero{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:40px 24px;
+    background:var(--sbz-blue);
+    border-radius:22px;
+    color:#fff;
+    font-weight:600;
+    text-align:center;
+  }
+  .sbz-nd__number{
+    margin:0;
+    font-size:clamp(56px,17.5cqw,96px);   /* 96px no tamanho original (547px) */
+    line-height:1;
+    white-space:nowrap;
+  }
+  .sbz-nd__caption{margin:0;font-size:20px;line-height:1.3}
+
+  /* ---------- cards ---------- */
+  .sbz-nd__row{display:flex;gap:20px;align-items:stretch}
+  .sbz-nd__card{
+    flex:1 1 0;
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    gap:32px;
+    padding:22px;
+    background:var(--sbz-blue-50);
+    border-radius:22px;
+  }
+  .sbz-nd__icon{
+    flex:0 0 auto;
+    width:56px;height:56px;
+    display:flex;align-items:center;justify-content:center;
+    background:#fff;
+    border-radius:6px;
+    color:var(--sbz-icon);
+  }
+  .sbz-nd__icon svg{display:block;width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .sbz-nd__text{display:flex;flex-direction:column;gap:12px}
+  .sbz-nd__title{margin:0;font-size:22px;line-height:1.22;font-weight:600;color:var(--sbz-title)}
+  .sbz-nd__desc{margin:0;font-size:16px;line-height:1.5;font-weight:400;color:var(--sbz-body)}
+
+  /* transição suave ao passar o mouse */
+  .sbz-nd__card{transition:transform .25s ease,box-shadow .25s ease}
+  .sbz-nd__card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(66,153,215,.18)}
+  @media (prefers-reduced-motion:reduce){.sbz-nd__card{transition:none}.sbz-nd__card:hover{transform:none}}
+
+  /* MOBILE: cards um embaixo do outro */
+  @container (max-width:440px){
+    .sbz-nd{margin-bottom:40px}
+    .sbz-nd__hero{padding:32px 16px}
+    .sbz-nd__row{flex-direction:column}
+    .sbz-nd__card{gap:24px}
+  }
+  @media (max-width:520px){
+    .sbz-nd{margin-bottom:40px}
+    .sbz-nd__hero{padding:32px 16px}
+    .sbz-nd__row{flex-direction:column}
+    .sbz-nd__card{gap:24px}
+  }
+</style>
+
+<div class="sbz-nd-wrap">
+  <div class="sbz-nd">
+
+    <div class="sbz-nd__hero">
+      <p class="sbz-nd__number">1.200+</p>
+      <p class="sbz-nd__caption">Lojas utilizando a Sizebay</p>
+    </div>
+
+    <div class="sbz-nd__row">
+      <div class="sbz-nd__card">
+        <div class="sbz-nd__icon" aria-hidden="true">
+          <!-- ícone de link -->
+          <svg viewBox="0 0 28 28" focusable="false">
+            <path d="M12 9.5H10a4.5 4.5 0 0 0 0 9h2"/>
+            <path d="M16 9.5h2a4.5 4.5 0 0 1 0 9h-2"/>
+            <path d="M10.5 14h7"/>
+          </svg>
+        </div>
+        <div class="sbz-nd__text">
+          <p class="sbz-nd__title">Integração Multiplataforma</p>
+          <p class="sbz-nd__desc">Integração com diferentes plataformas de e-commerce.</p>
+        </div>
+      </div>
+
+      <div class="sbz-nd__card">
+        <div class="sbz-nd__icon" aria-hidden="true">
+          <!-- ícone de camiseta -->
+          <svg viewBox="0 0 28 28" focusable="false">
+            <path d="M10.5 4.5 4 7.5l2 5 3-1.2V23h10V11.3l3 1.2 2-5-6.5-3a3.7 3.7 0 0 1-7 0z"/>
+          </svg>
+        </div>
+        <div class="sbz-nd__text">
+          <p class="sbz-nd__title">Tecnologia Fashion</p>
+          <p class="sbz-nd__desc">Soluções de tecnologia pensadas para o mercado de moda.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
