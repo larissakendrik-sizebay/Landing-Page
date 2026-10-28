@@ -83,3 +83,41 @@ Os textos seguem o Figma. Alguns blocos têm versão em espanhol (ex.: `rd-hero-
 - Banner de alerta: imagem acima do texto em contêineres pequenos; 40px de margem inferior só no mobile.
 - Cards da plataforma: 40px de margem inferior dentro do bloco.
 - Hero com cards: card do produto atrás da foto, medidas na frente.
+
+## Animação de entrada na página inteira
+
+Em vez de animar bloco por bloco, usamos **um único script** que faz tudo aparecer (fade + subida de 28px) quando entra na tela: `rd-animacao-entrada.html`.
+
+**Instalação (uma vez por página):** no RD, abra **Edição Avançada > Javascript em BODY**, cole o bloco `<script>` do arquivo e clique em **Aplicar**. Não precisa de CSS. A edição avançada não roda durante a edição: conferir no **Pré-visualizar**.
+
+**O que anima, sem precisar de código por elemento:**
+- Componentes nativos do RD, pelos ids `rd-text-`, `rd-title-`, `rd-image-`, `rd-video-` e `rd-button-`.
+- `rd-box-` só quando tem fundo, borda ou sombra (viram cards, entram inteiros). Caixa só de layout não anima: animamos o que há dentro.
+- Os blocos HTML da Sizebay, com cada card ou etapa entrando um depois do outro (`.sbz-nd__card`, `.sbz-bn__card`, `.sbz-pf3__card`, `.sbz-sol__card`, `.sbz-ps__step`, entre outros).
+
+**O que fica de fora:** links e botões (`a`, `button`), formulário, cabeçalho e rodapé, elementos fixos, o hero com a foto (`.sbz-pf`, `.sbz-hero`, que já têm animação própria) e qualquer elemento com a classe `sbz-nofx` (no RD: campo de classe CSS do elemento).
+
+**Segurança:** com "reduzir animações" ligado, ou se o script falhar, nada fica escondido. Se algum elemento não for detectado pelo navegador, o script o revela pela posição na tela.
+
+**Novo bloco HTML com cards ou etapas:** para os cards entrarem um a um, adicionar o seletor da classe do card nas duas listas do script (`COMP` e a lista do filtro `o.matches(...)`). Blocos sem isso entram pelos ids do RD ou ficam sem animação de entrada.
+
+**Atenção:** o `rd-interacoes.html` também faz entrada nos mesmos componentes. Usar só um dos dois na mesma página.
+
+## Blocos criados até agora
+
+| Arquivo | O que é |
+|---|---|
+| `rd-hero-imagem-puffer.html` | Foto da modelo com cards de vidro (produto, ajuste, medidas) |
+| `rd-numeros-destaque.html` | "1.200+ lojas" com contagem e dois cards |
+| `rd-beneficios-4-colunas.html` | Quatro benefícios (4 colunas, 2 no tablet, 1 no celular) |
+| `rd-cards-solucoes.html` | Provador Virtual, Try-On e Fashion Hub, com uma imagem de mockup por card |
+| `rd-passos.html` | Passos 01-02-03, com o tracinho que vai surgindo (para fundo escuro) |
+| `rd-perfis.html` | Perfis 01-02-03 em tons de azul |
+| `rd-animacao-entrada.html` | Script de entrada ao rolar, para a página toda |
+
+## Lições aprendidas
+
+- Ícones: com o host do Figma bloqueado, desenhamos os ícones simples em SVG. Para ficar idêntico, exportar os SVGs do Figma.
+- Imagens complexas (mockups com fotos): exportar uma imagem por card em PNG 2x e subir no RD, em vez de recriar tudo em HTML.
+- Pedido de "sem margem" ou "não esticar": manter a largura máxima do design e o bloco centralizado, a menos que a pessoa peça outra coisa.
+- Sempre enviar o arquivo clicável no chat depois de criar ou alterar um bloco.
