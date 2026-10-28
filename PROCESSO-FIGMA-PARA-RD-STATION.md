@@ -117,6 +117,7 @@ Quando a seção ou o botão foi criado direto no RD, não criamos HTML: damos o
 **Regra: um único arquivo de CSS.** Todo o CSS da aba é mantido em `rd-edicao-avancada.css`, organizado em seções numeradas. Quando houver um ajuste ou um item novo, atualizamos esse arquivo e **enviamos o arquivo inteiro**, para copiar e colar tudo de uma vez na aba CSS (substituindo o que já estava lá).
 
 Seções atuais:
+- Seção 0, fonte padrão **Outfit**: `@import` do Google Fonts no começo do CSS (precisa vir antes de qualquer regra) e `font-family` aplicado em textos, títulos, botões, links e campos de formulário. Fontes de ícones ficam de fora. A fonte não existe no RD, por isso é carregada por esse `@import`.
 - Seção 1, efeito de vidro: efeito de vidro no card do CTA final (`#rd-box-mvs6dotd`): fundo branco 80%, `backdrop-filter` de desfoque, borda clara, raio de 22px e sombra. O desfoque só aparece se o card for translúcido. Há um fundo mais opaco de reserva para navegadores sem suporte.
 - Seção 3, formulário `#rd-box-mnhrcpmi`: card claro (sem faixa no topo), rótulos em cinza-azulado, campos arredondados com borda azul-clara, foco com brilho azul, erro em rosa e caixinhas de marcar em azul. Serve para qualquer campo de texto, e-mail, telefone, lista ou mensagem do formulário.
 - Seção 2, hover dos botões: hover **suave** em todos os botões `.rd-button`: o tom da cor clareia um pouco (`brightness`), surge uma sombra discreta e um brilho fraco e lento atravessa o botão. Sem crescer nem pular. A primeira versão, com subida de 4px e zoom, foi considerada forte demais.
@@ -147,3 +148,4 @@ Cuidado: o `rd-interacoes.html` também estiliza `rd-button-` (visual rosa com s
 - CSS da aba Edição Avançada: sempre enviar o arquivo completo (`rd-edicao-avancada.css`), nunca só o trecho novo.
 - Botão de envio do formulário do RD pode desalinhar o texto se o CSS do formulário e o do botão se misturarem: o CSS único normaliza o botão dentro do formulário (texto centralizado, sem padding vertical extra). Se ainda ficar torto, pedir print do "Dados do elemento" do botão.
 - Ao filtrar elementos para animar, não usar `closest('a,button')` no próprio botão: o id do RD pode estar no `<a>`, e ele seria ignorado.
+- Fonte: o RD não tem a Outfit; ela é carregada por `@import` no começo do CSS único (seção 0). Blocos HTML criados por nós já carregam a Outfit por conta própria.

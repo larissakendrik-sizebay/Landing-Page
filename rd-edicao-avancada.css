@@ -4,6 +4,27 @@
    Quando pedirmos ajustes, este arquivo é atualizado e reenviado inteiro.
    ===================================================================== */
 
+/* ---------------------------------------------------------------------
+   0) Fonte padrão da página: Outfit (carregada do Google Fonts)
+      O @import precisa ficar no começo do CSS, antes de qualquer regra.
+      Vale para textos, títulos, botões, links e campos de formulário do RD.
+      Ícones (Font Awesome, Material, bandeira do telefone) ficam de fora para não quebrar.
+   --------------------------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap");
+
+body,
+h1,h2,h3,h4,h5,h6,
+p,span,a,li,label,small,strong,em,blockquote,
+button,input,select,textarea,
+[class^="rd-"]:not([class*="icon"]),
+[id^="rd-"]:not([class*="icon"]){
+  font-family:'Outfit',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif !important;
+}
+/* mantém as fontes de ícones intactas */
+i,[class*="fa-"],[class*="icon"],[class*="material"],.iti__flag,.iti__arrow{
+  font-family:revert !important;
+}
+
 
 /* ---------------------------------------------------------------------
    1) Efeito vidro (glass) no card do CTA "Juntos, podemos transformar..."
