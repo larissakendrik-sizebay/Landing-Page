@@ -103,6 +103,21 @@ Em vez de animar bloco por bloco, usamos **um único script** que faz tudo apare
 
 **Atenção:** o `rd-interacoes.html` também faz entrada nos mesmos componentes. Usar só um dos dois na mesma página.
 
+## Ajustes direto no editor do RD (CSS)
+
+Quando a seção ou o botão foi criado direto no RD, não criamos HTML: damos o acabamento por CSS, colado em **Edição Avançada > aba CSS** (só o conteúdo, sem tag `<style>`). Depois de **Aplicar**, conferir no **Pré-visualizar**, porque a edição avançada não aparece durante a edição.
+
+1. Pegar o **ID** do elemento no RD (painel "Dados do elemento": ex. `#rd-box-mvs6dotd`) e a classe (ex. `.rd-box`, `.rd-button`).
+2. Ler o frame no Figma para ver as medidas do efeito (cor, opacidade, raio).
+3. Escrever o CSS mirando o ID (um elemento) ou a classe (todos do tipo). Usar `!important` onde o RD já define o mesmo estilo.
+4. Testar numa página de exemplo e enviar o arquivo `.css` clicável.
+
+Exemplos prontos:
+- `rd-glass-cta.css`: efeito de vidro no card do CTA final (`#rd-box-mvs6dotd`): fundo branco 80%, `backdrop-filter` de desfoque, borda clara, raio de 22px e sombra. O desfoque só aparece se o card for translúcido. Há um fundo mais opaco de reserva para navegadores sem suporte.
+- `rd-botoes-hover.css`: hover **suave** em todos os botões `.rd-button`: o tom da cor clareia um pouco (`brightness`), surge uma sombra discreta e um brilho fraco e lento atravessa o botão. Sem crescer nem pular. A primeira versão, com subida de 4px e zoom, foi considerada forte demais.
+
+Cuidado: o `rd-interacoes.html` também estiliza `rd-button-` (visual rosa com seta). Usar só um dos dois na mesma página.
+
 ## Blocos criados até agora
 
 | Arquivo | O que é |
@@ -113,7 +128,9 @@ Em vez de animar bloco por bloco, usamos **um único script** que faz tudo apare
 | `rd-cards-solucoes.html` | Provador Virtual, Try-On e Fashion Hub, com uma imagem de mockup por card |
 | `rd-passos.html` | Passos 01-02-03, com o tracinho que vai surgindo (para fundo escuro) |
 | `rd-perfis.html` | Perfis 01-02-03 em tons de azul |
-| `rd-animacao-entrada.html` | Script de entrada ao rolar, para a página toda |
+| `rd-animacao-entrada.html` | Script de entrada ao rolar, para a página toda (JS em BODY) |
+| `rd-glass-cta.css` | Efeito vidro no card do CTA final (aba CSS) |
+| `rd-botoes-hover.css` | Hover suave nos botões `.rd-button` (aba CSS) |
 
 ## Lições aprendidas
 
@@ -121,3 +138,5 @@ Em vez de animar bloco por bloco, usamos **um único script** que faz tudo apare
 - Imagens complexas (mockups com fotos): exportar uma imagem por card em PNG 2x e subir no RD, em vez de recriar tudo em HTML.
 - Pedido de "sem margem" ou "não esticar": manter a largura máxima do design e o bloco centralizado, a menos que a pessoa peça outra coisa.
 - Sempre enviar o arquivo clicável no chat depois de criar ou alterar um bloco.
+- Animações: começar suave. Movimento forte (subir, dar zoom) costuma ser rejeitado; preferir leve mudança de tom, sombra discreta e brilho lento.
+- Elementos criados no RD: personalizar por CSS na aba Edição Avançada, mirando o ID ou a classe do elemento, em vez de recriar em HTML.

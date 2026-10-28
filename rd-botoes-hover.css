@@ -1,36 +1,37 @@
-/* ===== Hover nos botões criados no RD (.rd-button) (Sizebay) =====
+/* ===== Hover suave nos botões criados no RD (.rd-button) (Sizebay) =====
    Onde colar: Edição Avançada > aba "CSS" (cole só o conteúdo abaixo, sem tag <style>).
    Vale para TODOS os botões .rd-button da página, inclusive os que você criar depois.
-   Não muda cor, tamanho nem texto: só adiciona movimento ao passar o mouse. */
+   Não muda cor base, tamanho nem texto: só um leve clareamento do tom e um brilho discreto passando. */
 
 .rd-button{
   position:relative;
   overflow:hidden;                         /* o brilho não escapa do botão */
   cursor:pointer;
-  transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease,filter .25s ease;
+  transition:filter .5s ease,box-shadow .5s ease,transform .5s ease;
 }
 
-/* brilho que atravessa o botão */
+/* brilho suave que atravessa o botão (bem leve e lento) */
 .rd-button::before{
   content:"";
   position:absolute;
-  top:0;left:-80%;
-  width:45%;height:100%;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);
-  transform:skewX(-20deg);
-  transition:left .7s ease;
+  top:0;left:-70%;
+  width:50%;height:100%;
+  background:linear-gradient(110deg,transparent,rgba(255,255,255,.22),transparent);
+  transform:skewX(-18deg);
+  opacity:0;
+  transition:left 1.1s ease,opacity .4s ease;
   pointer-events:none;
 }
 
 .rd-button:hover{
-  transform:translateY(-4px) scale(1.03);  /* sobe e cresce um pouco */
-  box-shadow:0 14px 28px rgba(120,111,175,.35);
-  filter:brightness(1.06);
+  filter:brightness(1.08) saturate(1.05);  /* o tom da cor fica um pouco mais claro e vivo */
+  box-shadow:0 6px 18px rgba(120,111,175,.28);
+  transform:translateY(-1px);              /* quase imperceptível */
 }
-.rd-button:hover::before{left:130%}        /* o brilho passa da esquerda para a direita */
+.rd-button:hover::before{left:130%;opacity:1}
 
-.rd-button:active{transform:translateY(0) scale(.97)}   /* "afunda" ao clicar */
-.rd-button:focus-within{outline:3px solid rgba(120,111,175,.45);outline-offset:3px}
+.rd-button:active{filter:brightness(.97);transform:translateY(0)}
+.rd-button:focus-within{outline:2px solid rgba(120,111,175,.4);outline-offset:3px}
 
 @media (prefers-reduced-motion:reduce){
   .rd-button,.rd-button::before{transition:none}
