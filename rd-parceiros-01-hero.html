@@ -12,10 +12,9 @@
     --sbp-btn:#786faf;
     --sbp-line:#84c4f1;
     --sbp-mute:#dde7ee;
+    container-type:inline-size;       /* o bloco se ajusta à largura da coluna onde for colado */
     position:relative;
-    width:100vw;                      /* ocupa a largura toda, mesmo dentro de uma coluna do RD */
-    margin-left:calc(50% - 50vw);
-    height:760px;
+    width:100%;
     overflow:hidden;
     background:var(--sbp-bg);
     font-family:'Outfit',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
@@ -23,12 +22,17 @@
   }
   .sbp-hero *{box-sizing:border-box}
 
-  /* palco de 1920px centralizado: em telas menores só as pontas são cortadas */
-  .sbp-stage{position:relative;width:1920px;height:760px;left:50%;margin-left:-960px}
+  /* palco de 1920 x 760 do Figma, reduzido proporcionalmente quando a coluna é menor */
+  .sbp-stage{
+    --k:1px;
+    position:relative;margin:0 auto;
+    width:calc(var(--k)*1920);height:calc(var(--k)*760);
+  }
+  @supports (width:1cqw){ .sbp-stage{--k:min(1px,calc(100cqw / 1920))} }
 
   .sbp-bg{
     position:absolute;left:50%;top:0;
-    width:2059px;height:1098px;margin-left:-1029.5px;
+    width:calc(var(--k)*2059);height:calc(var(--k)*1098);margin-left:calc(var(--k)*-1029.5);
     background:url("TROCAR-URL-DO-FUNDO") center/cover no-repeat;   /* TROCAR: imagem de fundo */
     mix-blend-mode:luminosity;
     pointer-events:none;
@@ -36,23 +40,23 @@
 
   /* ---------- texto ---------- */
   .sbp-copy{
-    position:absolute;left:418px;top:50%;transform:translateY(-50%);
-    width:447px;
-    display:flex;flex-direction:column;align-items:flex-start;gap:42px;
+    position:absolute;left:calc(var(--k)*418);top:50%;transform:translateY(-50%);
+    width:calc(var(--k)*447);
+    display:flex;flex-direction:column;align-items:flex-start;gap:calc(var(--k)*42);
   }
-  .sbp-logo{display:block;width:127px;height:auto}
-  .sbp-text{display:flex;flex-direction:column;gap:16px}
-  .sbp-title{margin:0;font-size:42px;line-height:1.2;font-weight:600}
-  .sbp-lead{margin:0;font-size:16px;line-height:1.5;font-weight:600}
-  .sbp-body{margin:0;font-size:16px;line-height:1.5;font-weight:400}
+  .sbp-logo{display:block;width:calc(var(--k)*127);height:auto}
+  .sbp-text{display:flex;flex-direction:column;gap:calc(var(--k)*16)}
+  .sbp-title{margin:0;font-size:calc(var(--k)*42);line-height:1.2;font-weight:600}
+  .sbp-lead{margin:0;font-size:calc(var(--k)*16);line-height:1.5;font-weight:600}
+  .sbp-body{margin:0;font-size:calc(var(--k)*16);line-height:1.5;font-weight:400}
   .sbp-cta{
     display:flex;align-items:center;justify-content:center;
-    width:317px;max-width:100%;
-    padding:27px 30px;
+    width:calc(var(--k)*317);
+    padding:calc(var(--k)*27) calc(var(--k)*30);
     background:var(--sbp-btn);
-    border-radius:8px;
+    border-radius:calc(var(--k)*8);
     color:#fff;text-decoration:none;
-    font-size:20px;line-height:1.2;font-weight:600;text-align:center;
+    font-size:calc(var(--k)*20);line-height:1.2;font-weight:600;text-align:center;
     transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
   }
   .sbp-cta:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(120,111,175,.38);filter:brightness(1.06)}
@@ -60,8 +64,8 @@
 
   /* ---------- arte (foto + cards de vidro) ---------- */
   .sbp-art{
-    position:absolute;left:722px;top:0;
-    width:997px;height:760px;
+    position:absolute;left:calc(var(--k)*722);top:0;
+    width:calc(var(--k)*997);height:calc(var(--k)*760);
     container-type:inline-size;
   }
   .sbp-art__in{
@@ -170,14 +174,15 @@
   }
   .sbp-row__unit{font-size:calc(var(--u)*9.5);color:#484848}
 
-  /* ---------- celular / tablet: texto em cima, arte embaixo ---------- */
-  @media (max-width:1199px){
-    .sbp-hero{height:auto;padding:48px 24px 0}
-    .sbp-stage{width:100%;height:auto;left:0;margin-left:0}
+  /* ---------- coluna estreita / celular: texto em cima, arte embaixo ---------- */
+  @container (max-width:899px){
+    .sbp-stage{--k:1px;width:100%;height:auto;padding:48px 24px 0}
     .sbp-bg{width:100%;height:100%;left:0;margin-left:0}
     .sbp-copy{position:relative;left:auto;top:auto;transform:none;width:100%;max-width:560px;margin:0 auto;gap:28px}
     .sbp-title{font-size:32px}
-    .sbp-cta{width:100%;max-width:317px;padding:22px 24px;font-size:18px}
+    .sbp-lead,.sbp-body{font-size:16px}
+    .sbp-logo{width:127px}
+    .sbp-cta{width:100%;max-width:317px;padding:22px 24px;font-size:18px;border-radius:8px}
     .sbp-art{position:relative;left:auto;top:auto;width:100%;max-width:640px;height:auto;aspect-ratio:997/760;margin:32px auto 0}
   }
 
@@ -186,7 +191,7 @@
   }
 </style>
 
-<section class="sbp-hero" id="sbp-hero">
+<div class="sbp-hero" id="sbp-hero">
   <div class="sbp-bg" aria-hidden="true"></div>
   <div class="sbp-stage">
 
@@ -239,7 +244,7 @@
     </div>
 
   </div>
-</section>
+</div>
 
 <script>
   /* Entrada dos cards ao aparecer na tela + números e barras animados.
