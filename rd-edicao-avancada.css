@@ -23,6 +23,14 @@
 }
 
 
+/* Títulos: altura de linha de 120%, igual ao Figma */
+h1,h2,h3,h4,h5,h6,
+[id^="rd-title-"],
+[id^="rd-title-"] :is(span,strong,em,b,a,p,div){
+  line-height:1.2 !important;
+}
+
+
 /* ---------------------------------------------------------------------
    1) Efeito vidro (glass) no card do CTA "Juntos, podemos transformar..."
       Alvo: #rd-box-mvs6dotd. Medidas do Figma: fundo branco 80%, raio 22px.
