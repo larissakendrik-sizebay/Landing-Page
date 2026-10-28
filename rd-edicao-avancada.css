@@ -12,17 +12,14 @@
    --------------------------------------------------------------------- */
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap");
 
-body,
-h1,h2,h3,h4,h5,h6,
-p,span,a,li,label,small,strong,em,blockquote,
-button,input,select,textarea,
-[class^="rd-"]:not([class*="icon"]),
-[id^="rd-"]:not([class*="icon"]){
+:is(
+  body,
+  h1,h2,h3,h4,h5,h6,
+  p,span,a,li,label,small,strong,em,blockquote,
+  button,input,select,textarea,
+  [class^="rd-"],[id^="rd-"]
+):not(.fa,.fas,.far,.fab,.fal,[class*="fa-"],[class*="icon"],[class*="material"],.iti__flag,.iti__arrow){
   font-family:'Outfit',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif !important;
-}
-/* mantém as fontes de ícones intactas */
-i,[class*="fa-"],[class*="icon"],[class*="material"],.iti__flag,.iti__arrow{
-  font-family:revert !important;
 }
 
 
