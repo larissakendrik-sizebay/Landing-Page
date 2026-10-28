@@ -1,0 +1,95 @@
+<!-- ===== Perfis 01-02-03 (Sizebay) – colar em um bloco HTML do RD Station ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  .sbz-pf3-wrap{
+    container-type:inline-size;   /* reage à largura do próprio bloco, não só da tela */
+    display:flow-root;            /* a margem de baixo fica dentro do bloco (o RD não a corta) */
+    width:100%;
+  }
+  .sbz-pf3{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:20px;
+    width:100%;
+    max-width:1084px;
+    margin:0 auto;
+    box-sizing:border-box;
+    font-family:'Outfit',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  }
+  .sbz-pf3 *{box-sizing:border-box}
+  .sbz-pf3__card{
+    --c-num:#fff;
+    --c-title:#fff;
+    --c-text:#e6f4ff;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:32px;
+    min-height:360px;
+    padding:36px;
+    border-radius:22px;
+    background:var(--bg);
+    transition:transform .25s ease,box-shadow .25s ease;
+  }
+  .sbz-pf3__card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(33,105,155,.25)}
+  .sbz-pf3__card--1{--bg:#21699b}
+  .sbz-pf3__card--2{--bg:#4299d7;--c-text:#fff}
+  .sbz-pf3__card--3{--bg:#e6f4ff;--c-num:#2f82bc;--c-title:#434a50;--c-text:#555555}
+
+  .sbz-pf3__num{margin:0;font-size:64px;line-height:1;font-weight:600;color:var(--c-num);white-space:nowrap}
+  .sbz-pf3__text{display:flex;flex-direction:column;gap:12px}
+  .sbz-pf3__title{margin:0;font-size:28px;line-height:1.22;font-weight:600;color:var(--c-title)}
+  .sbz-pf3__desc{margin:0;font-size:16px;line-height:1.5;font-weight:400;color:var(--c-text)}
+
+  @media (prefers-reduced-motion:reduce){
+    .sbz-pf3__card{transition:none}
+    .sbz-pf3__card:hover{transform:none}
+  }
+
+  /* TABLET / MOBILE: um card embaixo do outro */
+  @container (max-width:820px){
+    .sbz-pf3{grid-template-columns:1fr;max-width:560px;margin-bottom:40px}
+    .sbz-pf3__card{min-height:0;padding:28px;gap:40px}
+    .sbz-pf3__num{font-size:52px}
+    .sbz-pf3__title{font-size:24px}
+  }
+  @media (max-width:900px){
+    .sbz-pf3{grid-template-columns:1fr;max-width:560px;margin-bottom:40px}
+    .sbz-pf3__card{min-height:0;padding:28px;gap:40px}
+    .sbz-pf3__num{font-size:52px}
+    .sbz-pf3__title{font-size:24px}
+  }
+</style>
+
+<div class="sbz-pf3-wrap">
+  <div class="sbz-pf3">
+
+    <div class="sbz-pf3__card sbz-pf3__card--1">
+      <p class="sbz-pf3__num">01</p>
+      <div class="sbz-pf3__text">
+        <h3 class="sbz-pf3__title">Plataformas de e-commerce</h3>
+        <p class="sbz-pf3__desc">Conecte seus lojistas a soluções de tecnologia desenvolvidas para as necessidades do mercado de moda.</p>
+      </div>
+    </div>
+
+    <div class="sbz-pf3__card sbz-pf3__card--2">
+      <p class="sbz-pf3__num">02</p>
+      <div class="sbz-pf3__text">
+        <h3 class="sbz-pf3__title">Agências e integradores</h3>
+        <p class="sbz-pf3__desc">Amplie as possibilidades do seu portfólio com soluções que complementam os serviços que você já oferece aos seus clientes.</p>
+      </div>
+    </div>
+
+    <div class="sbz-pf3__card sbz-pf3__card--3">
+      <p class="sbz-pf3__num">03</p>
+      <div class="sbz-pf3__text">
+        <h3 class="sbz-pf3__title">Consultorias e especialistas</h3>
+        <p class="sbz-pf3__desc">Identifique novas oportunidades para aprimorar a experiência de compra e ajudar os e-commerces que você atende a evoluir.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
