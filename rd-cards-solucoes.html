@@ -1,0 +1,118 @@
+<!-- ===== Cards de soluções: Provador Virtual / Try-On / Fashion Hub (Sizebay) – colar em um bloco HTML do RD Station =====
+     Falta só trocar os 3 src "COLE-A-URL-..." pelas imagens dos mockups (exportar do Figma em PNG 2x, fundo transparente,
+     subir no RD Station e colar as URLs). Enquanto não tiver URL, a área mostra só o degradê. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  .sbz-sol-wrap{
+    container-type:inline-size;   /* reage à largura do próprio bloco, não só da tela */
+    display:flow-root;            /* a margem de baixo fica dentro do bloco (o RD não a corta) */
+    width:100%;
+  }
+  .sbz-sol{
+    --sbz-title:#434a50;
+    --sbz-body:#555555;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:20px;
+    width:100%;
+    max-width:1084px;
+    margin:0 auto;
+    box-sizing:border-box;
+    font-family:'Outfit',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  }
+  .sbz-sol *{box-sizing:border-box}
+  .sbz-sol__card{
+    display:flex;
+    flex-direction:column;
+    border-radius:22px;
+    overflow:hidden;
+    background:#f0f4f7;
+    transition:transform .25s ease,box-shadow .25s ease;
+  }
+  .sbz-sol__card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(66,153,215,.2)}
+
+  /* área do mockup: degradê azul + brilho no canto superior direito */
+  .sbz-sol__media{
+    position:relative;
+    flex:0 0 auto;
+    aspect-ratio:348/337;
+    background:
+      radial-gradient(circle at 96% 6%,rgba(255,255,255,.5) 0,rgba(255,255,255,0) 22%),
+      linear-gradient(-52.58deg,#4299d7 13.698%,#a8d8fa 23.112%,#e6f4ff 143.1%);
+    overflow:hidden;
+  }
+  .sbz-sol__media img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:contain;object-position:center;
+    display:block;
+    transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .sbz-sol__media img:not([src^="http"]){display:none}   /* sem URL ainda: mostra só o degradê */
+  .sbz-sol__card:hover .sbz-sol__media img{transform:scale(1.04)}
+
+  .sbz-sol__body{
+    flex:1 1 auto;
+    min-height:262px;
+    padding:36px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .sbz-sol__title{margin:0;font-size:28px;line-height:1.22;font-weight:600;color:var(--sbz-title)}
+  .sbz-sol__desc{margin:0;font-size:16px;line-height:1.5;font-weight:400;color:var(--sbz-body)}
+
+  @media (prefers-reduced-motion:reduce){
+    .sbz-sol__card,.sbz-sol__media img{transition:none}
+    .sbz-sol__card:hover,.sbz-sol__card:hover .sbz-sol__media img{transform:none}
+  }
+
+  /* TABLET / MOBILE: um card embaixo do outro */
+  @container (max-width:860px){
+    .sbz-sol{grid-template-columns:1fr;max-width:480px;margin-bottom:40px}
+    .sbz-sol__body{min-height:0;padding:28px}
+  }
+  @media (max-width:900px){
+    .sbz-sol{grid-template-columns:1fr;max-width:480px;margin-bottom:40px}
+    .sbz-sol__body{min-height:0;padding:28px}
+  }
+</style>
+
+<div class="sbz-sol-wrap">
+  <div class="sbz-sol">
+
+    <div class="sbz-sol__card">
+      <div class="sbz-sol__media">
+        <img src="COLE-A-URL-DO-MOCKUP-PROVADOR-VIRTUAL" alt="Provador Virtual: ajuste da forma do corpo e tamanho ideal" loading="lazy">
+      </div>
+      <div class="sbz-sol__body">
+        <h3 class="sbz-sol__title">Provador Virtual</h3>
+        <p class="sbz-sol__desc">Ajude seus clientes a oferecer recomendações de tamanho personalizadas, para que os consumidores comprem com mais segurança e tenham mais confiança na hora de escolher o tamanho ideal.</p>
+      </div>
+    </div>
+
+    <div class="sbz-sol__card">
+      <div class="sbz-sol__media">
+        <img src="COLE-A-URL-DO-MOCKUP-TRY-ON" alt="Try-On: consumidor experimentando uma jaqueta com a própria foto" loading="lazy">
+      </div>
+      <div class="sbz-sol__body">
+        <h3 class="sbz-sol__title">Try-On</h3>
+        <p class="sbz-sol__desc">Leve a experiência de experimentar roupas para o ambiente online. Com a própria foto, o consumidor consegue visualizar como uma peça fica em seu corpo e tomar decisões de compra com mais confiança.</p>
+      </div>
+    </div>
+
+    <div class="sbz-sol__card">
+      <div class="sbz-sol__media">
+        <img src="COLE-A-URL-DO-MOCKUP-FASHION-HUB" alt="Fashion Hub: look completo com recomendação das peças" loading="lazy">
+      </div>
+      <div class="sbz-sol__body">
+        <h3 class="sbz-sol__title">Fashion Hub</h3>
+        <p class="sbz-sol__desc">Ajude seus clientes a tornar a descoberta de produtos mais simples e intuitiva, com recursos de busca e recomendação visual que tornam a jornada de compra mais personalizada.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
