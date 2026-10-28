@@ -1,0 +1,38 @@
+/* ===== Hover nos botões criados no RD (.rd-button) (Sizebay) =====
+   Onde colar: Edição Avançada > aba "CSS" (cole só o conteúdo abaixo, sem tag <style>).
+   Vale para TODOS os botões .rd-button da página, inclusive os que você criar depois.
+   Não muda cor, tamanho nem texto: só adiciona movimento ao passar o mouse. */
+
+.rd-button{
+  position:relative;
+  overflow:hidden;                         /* o brilho não escapa do botão */
+  cursor:pointer;
+  transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease,filter .25s ease;
+}
+
+/* brilho que atravessa o botão */
+.rd-button::before{
+  content:"";
+  position:absolute;
+  top:0;left:-80%;
+  width:45%;height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);
+  transform:skewX(-20deg);
+  transition:left .7s ease;
+  pointer-events:none;
+}
+
+.rd-button:hover{
+  transform:translateY(-4px) scale(1.03);  /* sobe e cresce um pouco */
+  box-shadow:0 14px 28px rgba(120,111,175,.35);
+  filter:brightness(1.06);
+}
+.rd-button:hover::before{left:130%}        /* o brilho passa da esquerda para a direita */
+
+.rd-button:active{transform:translateY(0) scale(.97)}   /* "afunda" ao clicar */
+.rd-button:focus-within{outline:3px solid rgba(120,111,175,.45);outline-offset:3px}
+
+@media (prefers-reduced-motion:reduce){
+  .rd-button,.rd-button::before{transition:none}
+  .rd-button:hover,.rd-button:active{transform:none}
+}
