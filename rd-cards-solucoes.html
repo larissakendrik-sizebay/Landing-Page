@@ -32,19 +32,18 @@
   }
   .sbz-sol__card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(66,153,215,.2)}
 
-  /* área do mockup: degradê azul + brilho no canto superior direito */
+  /* área do mockup: fundo azul claro liso */
   .sbz-sol__media{
     position:relative;
     flex:0 0 auto;
     aspect-ratio:348/337;
-    background:
-      radial-gradient(circle at 96% 6%,rgba(255,255,255,.5) 0,rgba(255,255,255,0) 22%),
-      linear-gradient(-52.58deg,#4299d7 13.698%,#a8d8fa 23.112%,#e6f4ff 143.1%);
+    background:#d2ecff;
     overflow:hidden;
   }
   .sbz-sol__media img{
-    position:absolute;inset:0;
-    width:100%;height:100%;
+    position:absolute;
+    left:7.5%;top:7.5%;               /* imagem um pouco menor que a área, sobra espaço para o zoom do hover */
+    width:85%;height:85%;
     object-fit:contain;object-position:center;
     display:block;
     transition:transform .5s cubic-bezier(.2,.7,.2,1);
