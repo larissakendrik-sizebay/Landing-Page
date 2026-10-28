@@ -1,0 +1,133 @@
+<!-- ===== Passos 01-02-03 (Sizebay) – colar em um bloco HTML do RD Station (feito para fundo escuro/colorido) ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  .sbz-ps-wrap{
+    container-type:inline-size;   /* reage à largura do próprio bloco, não só da tela */
+    display:flow-root;            /* a margem de baixo fica dentro do bloco (o RD não a corta) */
+    width:100%;
+  }
+  .sbz-ps{
+    --sbz-title:#ffffff;
+    --sbz-text:#e6f4ff;
+    --sbz-line:rgba(230,244,255,.4);
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    width:100%;
+    max-width:584px;
+    margin:0 auto;
+    padding:0;
+    list-style:none;
+    box-sizing:border-box;
+    font-family:'Outfit',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  }
+  .sbz-ps *{box-sizing:border-box}
+  .sbz-ps__step{
+    display:flex;
+    align-items:stretch;
+    gap:24px;
+  }
+
+  /* marcador: quadrado branco com o número + linha ligando ao próximo passo */
+  .sbz-ps__mark{
+    flex:0 0 64px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+  }
+  .sbz-ps__num{
+    flex:0 0 auto;
+    width:64px;height:64px;
+    display:flex;align-items:center;justify-content:center;
+    background:#fff;
+    border-radius:6px;
+    font-size:22px;line-height:1;font-weight:600;color:#434a50;
+  }
+  .sbz-ps__line{flex:1 1 auto;min-height:24px;width:2px;background:var(--sbz-line)}
+
+  /* card translúcido */
+  .sbz-ps__card{
+    flex:1 1 0;
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    padding:28px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:22px;
+    transition:transform .25s ease,background .25s ease,box-shadow .25s ease;
+  }
+  .sbz-ps__step:hover .sbz-ps__card{
+    transform:translateY(-3px);
+    background:rgba(255,255,255,.14);
+    box-shadow:0 12px 28px rgba(0,0,0,.18);
+  }
+  .sbz-ps__title{margin:0;font-size:22px;line-height:1.25;font-weight:600;color:var(--sbz-title)}
+  .sbz-ps__desc{margin:0;font-size:16px;line-height:1.5;font-weight:400;color:var(--sbz-text)}
+
+  @media (prefers-reduced-motion:reduce){
+    .sbz-ps__card{transition:none}
+    .sbz-ps__step:hover .sbz-ps__card{transform:none}
+  }
+
+  /* MOBILE */
+  @container (max-width:440px){
+    .sbz-ps{margin-bottom:40px}
+    .sbz-ps__step{gap:14px}
+    .sbz-ps__mark{flex-basis:48px}
+    .sbz-ps__num{width:48px;height:48px;font-size:18px}
+    .sbz-ps__card{padding:20px}
+    .sbz-ps__title{font-size:19px}
+  }
+  @media (max-width:480px){
+    .sbz-ps{margin-bottom:40px}
+    .sbz-ps__step{gap:14px}
+    .sbz-ps__mark{flex-basis:48px}
+    .sbz-ps__num{width:48px;height:48px;font-size:18px}
+    .sbz-ps__card{padding:20px}
+    .sbz-ps__title{font-size:19px}
+  }
+</style>
+
+<div class="sbz-ps-wrap">
+  <ol class="sbz-ps">
+
+    <li class="sbz-ps__step">
+      <div class="sbz-ps__mark" aria-hidden="true">
+        <div class="sbz-ps__num">01</div>
+        <div class="sbz-ps__line"></div>
+      </div>
+      <div class="sbz-ps__card">
+        <h3 class="sbz-ps__title">Identifique a oportunidade</h3>
+        <p class="sbz-ps__desc">Conheça as soluções da Sizebay e pense nos clientes da sua carteira que podem se beneficiar com nossas ferramentas.</p>
+      </div>
+    </li>
+
+    <li class="sbz-ps__step">
+      <div class="sbz-ps__mark" aria-hidden="true">
+        <div class="sbz-ps__num">02</div>
+        <div class="sbz-ps__line"></div>
+      </div>
+      <div class="sbz-ps__card">
+        <h3 class="sbz-ps__title">Faça a indicação</h3>
+        <p class="sbz-ps__desc">Encontrou uma oportunidade? Conecte o potencial cliente ao nosso time de Canais e Parcerias para começarmos a conversa.</p>
+      </div>
+    </li>
+
+    <li class="sbz-ps__step">
+      <div class="sbz-ps__mark" aria-hidden="true">
+        <div class="sbz-ps__num">03</div>
+      </div>
+      <div class="sbz-ps__card">
+        <h3 class="sbz-ps__title">Conte com a Sizebay</h3>
+        <p class="sbz-ps__desc">A partir dessa conexão, nosso time comercial apresenta as soluções, conduz a negociação e acompanha o processo de venda.</p>
+      </div>
+    </li>
+
+  </ol>
+</div>
