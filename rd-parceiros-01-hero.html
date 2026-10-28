@@ -1,83 +1,67 @@
 <!-- ===== LP Parceiros · Bloco 01 · Hero (Sizebay) – colar em um bloco HTML do RD Station =====
-     ANTES DE PUBLICAR: troque os 4 endereços marcados com "TROCAR" pelas imagens enviadas ao RD Station
-     (logo, fundo, foto do casal/modelo e foto da jaqueta). O link do botão também (href="#formulario"). -->
+     ANTES DE PUBLICAR: troque os 4 "TROCAR-URL-..." pelos endereços das imagens enviadas ao RD Station
+     (logo, fundo, foto da modelo e foto da jaqueta) e o link do botão (href="#formulario"). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
   .sbp-hero{
-    --sbp-bg:#d2ecff;
-    --sbp-text:#434a50;
-    --sbp-btn:#786faf;
-    --sbp-line:#84c4f1;
-    --sbp-mute:#dde7ee;
-    container-type:inline-size;       /* o bloco se ajusta à largura da coluna onde for colado */
     position:relative;
     width:100%;
     overflow:hidden;
-    background:var(--sbp-bg);
+    background:#d2ecff;
     font-family:'Outfit',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
-    color:var(--sbp-text);
+    color:#434a50;
   }
-  .sbp-hero *{box-sizing:border-box}
-
-  /* palco de 1920 x 760 do Figma, reduzido proporcionalmente quando a coluna é menor */
-  .sbp-stage{
-    --k:1px;
-    position:relative;margin:0 auto;
-    width:calc(var(--k)*1920);height:calc(var(--k)*760);
-  }
-  @supports (width:1cqw){ .sbp-stage{--k:min(1px,calc(100cqw / 1920))} }
+  .sbp-hero,.sbp-hero *{box-sizing:border-box}
 
   .sbp-bg{
-    position:absolute;left:50%;top:0;
-    width:calc(var(--k)*2059);height:calc(var(--k)*1098);margin-left:calc(var(--k)*-1029.5);
-    background:url("TROCAR-URL-DO-FUNDO") center/cover no-repeat;   /* TROCAR: imagem de fundo */
+    position:absolute;top:0;left:50%;
+    width:2059px;max-width:none;height:1098px;margin-left:-1029.5px;
+    object-fit:cover;
     mix-blend-mode:luminosity;
     pointer-events:none;
   }
 
+  /* área do desenho (1132 x 760): o texto fica na esquerda, a arte na direita e passa um pouco da borda */
+  .sbp-inner{position:relative;width:100%;max-width:1132px;height:760px;margin:0 auto}
+
   /* ---------- texto ---------- */
   .sbp-copy{
-    position:absolute;left:calc(var(--k)*418);top:50%;transform:translateY(-50%);
-    width:calc(var(--k)*447);
-    display:flex;flex-direction:column;align-items:flex-start;gap:calc(var(--k)*42);
+    position:absolute;left:24px;top:50%;transform:translateY(-50%);
+    width:447px;
+    display:flex;flex-direction:column;align-items:flex-start;gap:42px;
+    z-index:3;
   }
-  .sbp-logo{display:block;width:calc(var(--k)*127);height:auto}
-  .sbp-text{display:flex;flex-direction:column;gap:calc(var(--k)*16)}
-  .sbp-title{margin:0;font-size:calc(var(--k)*42);line-height:1.2;font-weight:600}
-  .sbp-lead{margin:0;font-size:calc(var(--k)*16);line-height:1.5;font-weight:600}
-  .sbp-body{margin:0;font-size:calc(var(--k)*16);line-height:1.5;font-weight:400}
+  .sbp-logo{display:block;width:127px;height:42px}
+  .sbp-text{display:flex;flex-direction:column;gap:16px}
+  .sbp-title{margin:0;font-size:42px;line-height:1.2;font-weight:600;color:#434a50}
+  .sbp-lead{margin:0;font-size:16px;line-height:1.5;font-weight:600;color:#434a50}
+  .sbp-body{margin:0;font-size:16px;line-height:1.5;font-weight:400;color:#434a50}
   .sbp-cta{
     display:flex;align-items:center;justify-content:center;
-    width:calc(var(--k)*317);
-    padding:calc(var(--k)*27) calc(var(--k)*30);
-    background:var(--sbp-btn);
-    border-radius:calc(var(--k)*8);
+    width:317px;max-width:100%;
+    padding:27px 30px;
+    background:#786faf;
+    border-radius:8px;
     color:#fff;text-decoration:none;
-    font-size:calc(var(--k)*20);line-height:1.2;font-weight:600;text-align:center;
+    font-size:20px;line-height:1.2;font-weight:600;text-align:center;
     transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
   }
-  .sbp-cta:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(120,111,175,.38);filter:brightness(1.06)}
-  .sbp-cta:focus-visible{outline:3px solid var(--sbp-line);outline-offset:3px}
+  .sbp-cta:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(120,111,175,.38);filter:brightness(1.06);color:#fff}
+  .sbp-cta:focus-visible{outline:3px solid #84c4f1;outline-offset:3px}
 
   /* ---------- arte (foto + cards de vidro) ---------- */
-  .sbp-art{
-    position:absolute;left:calc(var(--k)*722);top:0;
-    width:calc(var(--k)*997);height:calc(var(--k)*760);
-    container-type:inline-size;
-  }
+  .sbp-art{position:absolute;left:328px;top:0;width:997px;height:760px;z-index:1}
   .sbp-art__in{
     --u:1px;                          /* 1 unidade = 1px no desenho original (997 x 760) */
-    position:absolute;inset:0;overflow:hidden;
+    position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;
   }
-  @supports (width:1cqw){ .sbp-art__in{--u:calc(100cqw / 997)} }
-
   .sbp-photo{
     position:absolute;z-index:1;pointer-events:none;
     left:0;top:calc(var(--u)*53);
-    width:100%;height:auto;display:block;               /* TROCAR: foto (src no HTML) */
+    width:100%;max-width:none;height:auto;display:block;
   }
 
   .sbp-glass{
@@ -87,16 +71,15 @@
             backdrop-filter:blur(calc(var(--u)*10)) saturate(1.3);
     border:1px solid rgba(255,255,255,.55);
     box-shadow:0 calc(var(--u)*10) calc(var(--u)*28) rgba(49,37,105,.16);
-    transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease;
-    transition-delay:var(--d,0s);
+    transition:transform .3s ease,box-shadow .3s ease;
+    animation:sbp-in .7s cubic-bezier(.2,.7,.2,1) both;
+    animation-delay:var(--d,0s);
   }
   .sbp-glass:hover{
     transform:translateY(calc(var(--u)*-6));
     box-shadow:0 calc(var(--u)*18) calc(var(--u)*40) rgba(49,37,105,.3);
   }
-  /* entrada (só ativa se o JavaScript rodar; sem JS tudo fica visível) */
-  .sbp-hero.is-ready:not(.is-in) .sbp-glass{opacity:0;transform:translateY(calc(var(--u)*18))}
-  .sbp-hero.is-done .sbp-glass{transition:transform .3s ease,box-shadow .3s ease;transition-delay:0s}
+  @keyframes sbp-in{from{opacity:0;transform:translateY(calc(var(--u)*18))}to{opacity:1;transform:none}}
 
   /* 1) produto (fica ATRÁS da foto) */
   .sbp-pdp{
@@ -110,15 +93,15 @@
   .sbp-pdp__img{
     position:relative;flex:0 0 auto;
     width:100%;height:calc(var(--u)*143.2);
-    background:var(--sbp-mute);border-radius:calc(var(--u)*6.3);overflow:hidden;
+    background:#dde7ee;border-radius:calc(var(--u)*6.3);overflow:hidden;
   }
   .sbp-pdp__img img{
     position:absolute;left:50%;top:50%;
-    width:calc(var(--u)*126);height:calc(var(--u)*156);
-    transform:translate(-50%,-50%);object-fit:cover;display:block;   /* TROCAR: foto da jaqueta */
+    width:calc(var(--u)*126);height:calc(var(--u)*156);max-width:none;
+    transform:translate(-50%,-50%);object-fit:cover;display:block;
   }
   .sbp-pdp__lines{display:flex;flex-direction:column;gap:calc(var(--u)*4.2)}
-  .sbp-pdp__lines i{display:block;height:calc(var(--u)*8);border-radius:99px;background:var(--sbp-mute)}
+  .sbp-pdp__lines i{display:block;height:calc(var(--u)*8);border-radius:99px;background:#dde7ee}
   .sbp-pdp__lines i:nth-child(1){width:100%}
   .sbp-pdp__lines i:nth-child(2){width:72%}
   .sbp-pdp__lines i:nth-child(3){width:50%}
@@ -133,12 +116,12 @@
     display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*4.7);
   }
   .sbp-field{display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*4.9)}
-  .sbp-field__label{font-size:calc(var(--u)*14);font-weight:500;line-height:normal;white-space:nowrap}
+  .sbp-field__label{font-size:calc(var(--u)*14);font-weight:500;line-height:normal;white-space:nowrap;color:#434a50}
   .sbp-field__box{
     width:calc(var(--u)*106);height:calc(var(--u)*40.7);
     display:flex;align-items:center;justify-content:center;
-    background:#fff;border:calc(var(--u)*.9) solid var(--sbp-line);border-radius:calc(var(--u)*6);
-    font-size:calc(var(--u)*16);font-weight:400;
+    background:#fff;border:calc(var(--u)*.9) solid #84c4f1;border-radius:calc(var(--u)*6);
+    font-size:calc(var(--u)*16);font-weight:400;color:#434a50;
   }
 
   /* 3) medidas (na FRENTE da foto) */
@@ -153,47 +136,42 @@
   .sbp-row{display:flex;align-items:center;gap:calc(var(--u)*7);height:calc(var(--u)*21)}
   .sbp-row__label{flex:0 0 calc(var(--u)*40);font-size:calc(var(--u)*9.5);font-weight:500;color:#484848}
   .sbp-row__bar{position:relative;flex:1 1 auto;height:calc(var(--u)*5);border-radius:99px;background:#fff}
-  .sbp-row__fill{
-    position:absolute;left:0;top:0;height:100%;width:var(--p);
-    border-radius:99px;background:var(--sbp-line);
-    transition:width 1.2s cubic-bezier(.2,.7,.2,1);
-  }
+  .sbp-row__fill{position:absolute;left:0;top:0;height:100%;border-radius:99px;background:#84c4f1}
   .sbp-row__fill::after{
     content:"";position:absolute;right:calc(var(--u)*-6);top:50%;
     width:calc(var(--u)*12);height:calc(var(--u)*12);margin-top:calc(var(--u)*-6);
-    border-radius:50%;background:#fff;border:calc(var(--u)*1.2) solid var(--sbp-line);
+    border-radius:50%;background:#fff;border:calc(var(--u)*1.2) solid #84c4f1;
     box-shadow:0 1px 3px rgba(4,42,68,.18);
   }
-  .sbp-hero.is-ready:not(.is-in) .sbp-row__fill{width:0}
   .sbp-row__val{display:flex;align-items:center;gap:calc(var(--u)*3);margin-left:calc(var(--u)*6)}
   .sbp-row__num{
     min-width:calc(var(--u)*28.5);height:calc(var(--u)*20.7);
     display:flex;align-items:center;justify-content:center;
-    background:#fff;border:calc(var(--u)*.6) solid var(--sbp-line);border-radius:calc(var(--u)*1.8);
-    font-size:calc(var(--u)*14.2);font-weight:500;color:#484848;font-variant-numeric:tabular-nums;
+    background:#fff;border:calc(var(--u)*.6) solid #84c4f1;border-radius:calc(var(--u)*1.8);
+    font-size:calc(var(--u)*14.2);font-weight:500;color:#484848;
   }
   .sbp-row__unit{font-size:calc(var(--u)*9.5);color:#484848}
 
-  /* ---------- coluna estreita / celular: texto em cima, arte embaixo ---------- */
-  @container (max-width:899px){
-    .sbp-stage{--k:1px;width:100%;height:auto;padding:48px 24px 0}
-    .sbp-bg{width:100%;height:100%;left:0;margin-left:0}
-    .sbp-copy{position:relative;left:auto;top:auto;transform:none;width:100%;max-width:560px;margin:0 auto;gap:28px}
+  /* ---------- celular / tablet: texto em cima, arte embaixo ---------- */
+  @media (max-width:1099px){
+    .sbp-hero{padding:48px 24px 0}
+    .sbp-bg{left:0;width:100%;height:100%;margin-left:0}
+    .sbp-inner{height:auto;max-width:640px}
+    .sbp-copy{position:relative;left:auto;top:auto;transform:none;width:100%;gap:28px}
     .sbp-title{font-size:32px}
-    .sbp-lead,.sbp-body{font-size:16px}
-    .sbp-logo{width:127px}
-    .sbp-cta{width:100%;max-width:317px;padding:22px 24px;font-size:18px;border-radius:8px}
-    .sbp-art{position:relative;left:auto;top:auto;width:100%;max-width:640px;height:auto;aspect-ratio:997/760;margin:32px auto 0}
+    .sbp-cta{width:100%;max-width:317px;padding:22px 24px;font-size:18px}
+    .sbp-art{position:relative;left:auto;top:auto;width:100%;height:auto;aspect-ratio:997/760;margin-top:32px}
+    .sbp-art__in{--u:calc(min(100vw - 48px,640px) / 997)}
   }
 
   @media (prefers-reduced-motion:reduce){
-    .sbp-glass,.sbp-row__fill,.sbp-cta{transition:none !important}
+    .sbp-glass,.sbp-cta{transition:none !important;animation:none !important}
   }
 </style>
 
-<div class="sbp-hero" id="sbp-hero">
-  <div class="sbp-bg" aria-hidden="true"></div>
-  <div class="sbp-stage">
+<div class="sbp-hero">
+  <img class="sbp-bg" src="TROCAR-URL-DO-FUNDO" alt="" aria-hidden="true">
+  <div class="sbp-inner">
 
     <div class="sbp-copy">
       <img class="sbp-logo" src="TROCAR-URL-DO-LOGO" alt="Sizebay" width="127" height="42">
@@ -209,35 +187,32 @@
       <div class="sbp-art__in">
         <img class="sbp-photo" src="TROCAR-URL-DA-FOTO" alt="" width="997" height="1237">
 
-        <!-- Produto -->
         <div class="sbp-glass sbp-pdp">
           <div class="sbp-pdp__img"><img src="TROCAR-URL-DA-JAQUETA" alt="Jaqueta puffer bege com gola alta"></div>
           <div class="sbp-pdp__lines" aria-hidden="true"><i></i><i></i><i></i></div>
         </div>
 
-        <!-- Ajuste -->
         <div class="sbp-glass sbp-ajuste">
           <div class="sbp-field"><span class="sbp-field__label">Altura</span><span class="sbp-field__box">165 cm</span></div>
           <div class="sbp-field"><span class="sbp-field__label">Peso</span><span class="sbp-field__box">57 kg</span></div>
           <div class="sbp-field"><span class="sbp-field__label">Idade</span><span class="sbp-field__box">28</span></div>
         </div>
 
-        <!-- Medidas -->
         <div class="sbp-glass sbp-datos">
           <div class="sbp-row">
             <span class="sbp-row__label">Busto</span>
-            <span class="sbp-row__bar"><span class="sbp-row__fill" style="--p:52%"></span></span>
-            <span class="sbp-row__val"><span class="sbp-row__num" data-count="81">81</span><span class="sbp-row__unit">cm</span></span>
+            <span class="sbp-row__bar"><span class="sbp-row__fill" style="width:52%"></span></span>
+            <span class="sbp-row__val"><span class="sbp-row__num">81</span><span class="sbp-row__unit">cm</span></span>
           </div>
           <div class="sbp-row">
             <span class="sbp-row__label">Cintura</span>
-            <span class="sbp-row__bar"><span class="sbp-row__fill" style="--p:31%"></span></span>
-            <span class="sbp-row__val"><span class="sbp-row__num" data-count="69">69</span><span class="sbp-row__unit">cm</span></span>
+            <span class="sbp-row__bar"><span class="sbp-row__fill" style="width:31%"></span></span>
+            <span class="sbp-row__val"><span class="sbp-row__num">69</span><span class="sbp-row__unit">cm</span></span>
           </div>
           <div class="sbp-row">
             <span class="sbp-row__label">Quadril</span>
-            <span class="sbp-row__bar"><span class="sbp-row__fill" style="--p:74%"></span></span>
-            <span class="sbp-row__val"><span class="sbp-row__num" data-count="95">95</span><span class="sbp-row__unit">cm</span></span>
+            <span class="sbp-row__bar"><span class="sbp-row__fill" style="width:74%"></span></span>
+            <span class="sbp-row__val"><span class="sbp-row__num">95</span><span class="sbp-row__unit">cm</span></span>
           </div>
         </div>
       </div>
@@ -245,41 +220,3 @@
 
   </div>
 </div>
-
-<script>
-  /* Entrada dos cards ao aparecer na tela + números e barras animados.
-     Sem JavaScript, o bloco aparece completo e estático. */
-  (function(){
-    var root=document.getElementById('sbp-hero');
-    if(!root)return;
-    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    function countUp(){
-      [].slice.call(root.querySelectorAll('[data-count]')).forEach(function(el){
-        var end=parseInt(el.getAttribute('data-count'),10),from=Math.max(end-14,0),t0=null,dur=1200;
-        el.textContent=from;
-        function step(t){
-          if(!t0)t0=t;
-          var p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,3);
-          el.textContent=Math.round(from+(end-from)*e);
-          if(p<1)requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      });
-    }
-
-    function show(){
-      root.classList.add('is-in');
-      countUp();
-      setTimeout(function(){root.classList.add('is-done');},1600);
-    }
-
-    if(reduce||!('IntersectionObserver' in window))return;
-    root.classList.add('is-ready');
-    var io=new IntersectionObserver(function(es){
-      if(es[0].isIntersecting){io.disconnect();show();}
-    },{threshold:.25});
-    io.observe(root);
-    setTimeout(function(){if(!root.classList.contains('is-in')){var r=root.getBoundingClientRect();if(r.bottom>0&&r.top<window.innerHeight){io.disconnect();show();}}},1500);
-  })();
-</script>
