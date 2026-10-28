@@ -116,6 +116,7 @@ Quando a seção ou o botão foi criado direto no RD, não criamos HTML: damos o
 
 Seções atuais:
 - Seção 1, efeito de vidro: efeito de vidro no card do CTA final (`#rd-box-mvs6dotd`): fundo branco 80%, `backdrop-filter` de desfoque, borda clara, raio de 22px e sombra. O desfoque só aparece se o card for translúcido. Há um fundo mais opaco de reserva para navegadores sem suporte.
+- Seção 3, formulário `#rd-box-mnhrcpmi`: card claro com faixa de cor no topo, rótulos em cinza-azulado, campos arredondados com borda azul-clara, foco com brilho azul, erro em rosa e caixinhas de marcar em azul. Serve para qualquer campo de texto, e-mail, telefone, lista ou mensagem do formulário.
 - Seção 2, hover dos botões: hover **suave** em todos os botões `.rd-button`: o tom da cor clareia um pouco (`brightness`), surge uma sombra discreta e um brilho fraco e lento atravessa o botão. Sem crescer nem pular. A primeira versão, com subida de 4px e zoom, foi considerada forte demais.
 
 Cuidado: o `rd-interacoes.html` também estiliza `rd-button-` (visual rosa com seta). Usar só um dos dois na mesma página.
@@ -131,7 +132,7 @@ Cuidado: o `rd-interacoes.html` também estiliza `rd-button-` (visual rosa com s
 | `rd-passos.html` | Passos 01-02-03, com o tracinho que vai surgindo (para fundo escuro) |
 | `rd-perfis.html` | Perfis 01-02-03 em tons de azul |
 | `rd-animacao-entrada.html` | Script de entrada ao rolar, para a página toda (JS em BODY) |
-| `rd-edicao-avancada.css` | CSS único da aba CSS: vidro no CTA final + hover suave nos botões `.rd-button` |
+| `rd-edicao-avancada.css` | CSS único da aba CSS: vidro no CTA final + hover suave nos botões `.rd-button` + formulário |
 
 ## Lições aprendidas
 
