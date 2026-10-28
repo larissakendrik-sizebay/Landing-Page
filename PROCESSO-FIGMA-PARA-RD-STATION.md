@@ -36,7 +36,7 @@ O RD Station aceita um bloco HTML único, então tudo vai junto no mesmo arquivo
 ### Layouts normais (banners, cards)
 
 - Usar flex/grid e `container query` (`@container (max-width:700px)`) para o mobile, mais um `@media (max-width:768px)` de reserva.
-- Margens externas do bloco ficam **dentro** dele (`display:flow-root` no contêiner), porque o RD Station corta margens que ficam fora.
+- Margens externas do bloco ficam **dentro** dele (`display:flow-root` no contêiner), porque o RD Station corta margens que ficam fora. Mas **não colocar margem embaixo no mobile** nos blocos novos: o espaçamento fica por conta do RD (o design deve ficar colado na caixa do elemento).
 
 ### Efeito "vidro" dos cards
 
@@ -149,3 +149,4 @@ Cuidado: o `rd-interacoes.html` também estiliza `rd-button-` (visual rosa com s
 - Botão de envio do formulário do RD pode desalinhar o texto se o CSS do formulário e o do botão se misturarem: o CSS único normaliza o botão dentro do formulário (texto centralizado, sem padding vertical extra). Se ainda ficar torto, pedir print do "Dados do elemento" do botão.
 - Ao filtrar elementos para animar, não usar `closest('a,button')` no próprio botão: o id do RD pode estar no `<a>`, e ele seria ignorado.
 - Fonte: o RD não tem a Outfit; ela é carregada por `@import` no começo do CSS único (seção 0). Blocos HTML criados por nós já carregam a Outfit por conta própria.
+- Blocos novos não levam margem inferior no mobile (nem centralização com folga lateral): o espaçamento entre blocos é feito no RD.
