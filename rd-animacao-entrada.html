@@ -1,7 +1,7 @@
 <!-- ===== Animação de entrada ao rolar a página (Sizebay) =====
      Onde colar: Edição Avançada > aba "Javascript em BODY" (cole o bloco <script> inteiro abaixo).
      Não precisa de CSS nem de mexer em cada elemento: o script encontra sozinho os textos, títulos, imagens, vídeos,
-     botões e cards do RD, e também os blocos HTML da Sizebay (sbz-...), e faz cada um aparecer (fade + subida)
+     botões (inclusive o botão em si, mesmo quando o id está no link) e cards do RD, e também os blocos HTML da Sizebay (sbz-...), e faz cada um aparecer (fade + subida)
      quando entra na tela, com um pequeno atraso entre os que aparecem juntos.
 
      Para NÃO animar um elemento específico: adicione a classe  sbz-nofx  nele (no RD: Avançado > Classe CSS).
@@ -23,6 +23,8 @@
   ].join(',');
   /* o que nunca recebe (ou já tem animação própria) */
   var SKIP='a,button,form,header,nav,footer a,.sbz-nofx,.sbz-pf,.sbz-hero,.sbz-logos,[id^="rd-header"],[id^="rd-navbar"]';
+  /* botões do RD: o id pode estar no próprio <a>/<button>, então só olhamos o que está em volta deles */
+  var SKIP_AROUND='form,header,nav,.sbz-nofx,.sbz-pf,.sbz-hero,.sbz-logos,[id^="rd-header"],[id^="rd-navbar"]';
 
   function isStyledBox(el){
     /* "rd-box" só vira card animado se tiver fundo, borda ou sombra; caixa só de layout não: animamos o que há dentro */
@@ -37,8 +39,9 @@
 
   function init(){
     var all=[].slice.call(document.querySelectorAll(COMP)).filter(function(el){
-      if(el.closest(SKIP))return false;
-      if(el.matches('[id^="rd-button-"]')&&/^(A|BUTTON)$/.test(el.tagName))return false;
+      if(el.matches('[id^="rd-button-"]')){
+        if(el.closest('.sbz-nofx')||(el.parentElement&&el.parentElement.closest(SKIP_AROUND)))return false;
+      }else if(el.closest(SKIP))return false;
       var pos=getComputedStyle(el).position;
       if(pos==='fixed'||pos==='sticky')return false;
       return isStyledBox(el);

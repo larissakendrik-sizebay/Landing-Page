@@ -65,7 +65,7 @@
 
 
 /* ---------------------------------------------------------------------
-   3) Formulário #rd-box-mnhrcpmi: card limpo, campos arredondados e foco azul
+   3) Formulário #rd-box-mnhrcpmi: card limpo, campos arredondados e foco azul (sem faixa no topo)
    --------------------------------------------------------------------- */
 #rd-box-mnhrcpmi{
   position:relative;
@@ -74,16 +74,6 @@
   border-radius:22px !important;
   box-shadow:0 24px 60px rgba(33,105,155,.18),inset 0 0 0 1px rgba(255,255,255,.7) !important;
 }
-/* faixa de cor no topo do card */
-#rd-box-mnhrcpmi::before{
-  content:"";
-  position:absolute;
-  top:0;left:0;right:0;
-  height:5px;
-  background:linear-gradient(90deg,#4299d7,#786faf);
-  pointer-events:none;
-}
-
 /* rótulos */
 #rd-box-mnhrcpmi label{
   font-size:14px !important;
@@ -128,3 +118,36 @@
 /* caixinhas de marcar (aceite, opções) */
 #rd-box-mnhrcpmi input[type=checkbox],
 #rd-box-mnhrcpmi input[type=radio]{accent-color:#4299d7}
+
+/* botão de envio do formulário: texto centralizado e espaçamento certo
+   (o efeito de hover da seção 2 continua valendo) */
+#rd-box-mnhrcpmi .rd-button{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  line-height:1.2 !important;
+  box-sizing:border-box !important;
+}
+#rd-box-mnhrcpmi .rd-button > *,
+#rd-box-mnhrcpmi .rd-button a,
+#rd-box-mnhrcpmi .rd-button button{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  height:100% !important;
+  margin:0 !important;
+  padding:0 !important;
+  line-height:1.2 !important;
+  text-align:center !important;
+}
+#rd-box-mnhrcpmi button[type=submit],
+#rd-box-mnhrcpmi input[type=submit]{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  line-height:1.2 !important;
+  padding-top:0 !important;
+  padding-bottom:0 !important;
+}

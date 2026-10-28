@@ -95,7 +95,9 @@ Em vez de animar bloco por bloco, usamos **um único script** que faz tudo apare
 - `rd-box-` só quando tem fundo, borda ou sombra (viram cards, entram inteiros). Caixa só de layout não anima: animamos o que há dentro.
 - Os blocos HTML da Sizebay, com cada card ou etapa entrando um depois do outro (`.sbz-nd__card`, `.sbz-bn__card`, `.sbz-pf3__card`, `.sbz-sol__card`, `.sbz-ps__step`, entre outros).
 
-**O que fica de fora:** links e botões (`a`, `button`), formulário, cabeçalho e rodapé, elementos fixos, o hero com a foto (`.sbz-pf`, `.sbz-hero`, que já têm animação própria) e qualquer elemento com a classe `sbz-nofx` (no RD: campo de classe CSS do elemento).
+**Botões:** entram com a animação mesmo quando o id `rd-button-` está no próprio link/botão. Os botões de dentro de um formulário não animam sozinhos (o card do formulário entra inteiro).
+
+**O que fica de fora:** links e botões comuns (`a`, `button`) que não são `rd-button-`, formulário, cabeçalho e rodapé, elementos fixos, o hero com a foto (`.sbz-pf`, `.sbz-hero`, que já têm animação própria) e qualquer elemento com a classe `sbz-nofx` (no RD: campo de classe CSS do elemento).
 
 **Segurança:** com "reduzir animações" ligado, ou se o script falhar, nada fica escondido. Se algum elemento não for detectado pelo navegador, o script o revela pela posição na tela.
 
@@ -116,7 +118,7 @@ Quando a seção ou o botão foi criado direto no RD, não criamos HTML: damos o
 
 Seções atuais:
 - Seção 1, efeito de vidro: efeito de vidro no card do CTA final (`#rd-box-mvs6dotd`): fundo branco 80%, `backdrop-filter` de desfoque, borda clara, raio de 22px e sombra. O desfoque só aparece se o card for translúcido. Há um fundo mais opaco de reserva para navegadores sem suporte.
-- Seção 3, formulário `#rd-box-mnhrcpmi`: card claro com faixa de cor no topo, rótulos em cinza-azulado, campos arredondados com borda azul-clara, foco com brilho azul, erro em rosa e caixinhas de marcar em azul. Serve para qualquer campo de texto, e-mail, telefone, lista ou mensagem do formulário.
+- Seção 3, formulário `#rd-box-mnhrcpmi`: card claro (sem faixa no topo), rótulos em cinza-azulado, campos arredondados com borda azul-clara, foco com brilho azul, erro em rosa e caixinhas de marcar em azul. Serve para qualquer campo de texto, e-mail, telefone, lista ou mensagem do formulário.
 - Seção 2, hover dos botões: hover **suave** em todos os botões `.rd-button`: o tom da cor clareia um pouco (`brightness`), surge uma sombra discreta e um brilho fraco e lento atravessa o botão. Sem crescer nem pular. A primeira versão, com subida de 4px e zoom, foi considerada forte demais.
 
 Cuidado: o `rd-interacoes.html` também estiliza `rd-button-` (visual rosa com seta). Usar só um dos dois na mesma página.
@@ -143,3 +145,5 @@ Cuidado: o `rd-interacoes.html` também estiliza `rd-button-` (visual rosa com s
 - Animações: começar suave. Movimento forte (subir, dar zoom) costuma ser rejeitado; preferir leve mudança de tom, sombra discreta e brilho lento.
 - Elementos criados no RD: personalizar por CSS na aba Edição Avançada, mirando o ID ou a classe do elemento, em vez de recriar em HTML.
 - CSS da aba Edição Avançada: sempre enviar o arquivo completo (`rd-edicao-avancada.css`), nunca só o trecho novo.
+- Botão de envio do formulário do RD pode desalinhar o texto se o CSS do formulário e o do botão se misturarem: o CSS único normaliza o botão dentro do formulário (texto centralizado, sem padding vertical extra). Se ainda ficar torto, pedir print do "Dados do elemento" do botão.
+- Ao filtrar elementos para animar, não usar `closest('a,button')` no próprio botão: o id do RD pode estar no `<a>`, e ele seria ignorado.
