@@ -1,0 +1,904 @@
+<!-- ===== Banner CTA "Nos vemos no Connection 2027!" (Sizebay) – colar em um bloco HTML do RD Station =====
+     Texto com efeito "Chromatic metal" (shader WebGPU do Figma, portado para JS puro).
+     Requer WebGPU + HTML-in-Canvas (Chrome/Edge atrás da flag chrome://flags/#canvas-draw-element).
+     Em navegadores sem suporte, o texto aparece branco normal (fallback automático). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+  .sbz-cta{
+    --sbz-cta-blue:#0064fd;
+    --sbz-cta-text:#f5f5f9;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:104.696px;
+    width:100%;
+    max-width:1100px;
+    margin:0 auto;
+    padding:31.652px 53.565px;
+    background:rgba(255,255,255,.08);
+    border:1.826px solid #f5f5f9;
+    border-radius:12.174px;
+    box-sizing:border-box;
+    font-family:'Chakra Petch',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  }
+  .sbz-cta *{box-sizing:border-box}
+
+  /* Título com skew + escala, igual ao Figma */
+  .sbz-cta__title-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 410.742px;
+    max-width:100%;
+    min-height:72.36px;
+  }
+  .sbz-cta__title-inner{
+    flex:none;
+    transform:scaleY(.99) skewX(-7.59deg);
+  }
+  .sbz-cta__canvas{
+    display:block;
+    width:401.094px;
+    max-width:100%;
+    height:73px;
+  }
+  .sbz-cta__title{
+    margin:0;
+    width:401.094px;
+    max-width:100%;
+    font-weight:700;
+    font-size:43.192px;
+    line-height:1;
+    text-transform:uppercase;
+    color:#fff;
+    word-break:break-word;
+    text-box:trim-both cap alphabetic;
+  }
+
+  /* Botão CTA */
+  .sbz-cta__btn{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    flex-shrink:0;
+    padding:20px 24px 20px 32px;
+    background:var(--sbz-cta-blue);
+    border-radius:8px;
+    color:var(--sbz-cta-text);
+    font-weight:600;
+    font-size:16px;
+    line-height:1;
+    letter-spacing:1.28px;
+    text-transform:uppercase;
+    text-decoration:none;
+    white-space:nowrap;
+    cursor:pointer;
+    overflow:hidden;
+    isolation:isolate;
+    transition:box-shadow 240ms cubic-bezier(.2,.8,.2,1),transform 240ms cubic-bezier(.2,.8,.2,1);
+  }
+  /* Hover: gradiente azul → azul claro (camada com fade para animar) */
+  .sbz-cta__btn::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:linear-gradient(90deg,#0064fd 0%,#4db8ff 100%);
+    opacity:0;
+    transition:opacity 240ms cubic-bezier(.2,.8,.2,1);
+  }
+  .sbz-cta__btn:hover,
+  .sbz-cta__btn:focus-visible{
+    box-shadow:0 0 24px rgba(77,219,255,.55),0 0 6px rgba(77,219,255,.6);
+  }
+  .sbz-cta__btn:hover::before,
+  .sbz-cta__btn:focus-visible::before{opacity:1}
+  .sbz-cta__btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+  .sbz-cta__icon{
+    display:block;
+    width:28px;
+    height:28px;
+    flex:none;
+    transition:transform 240ms cubic-bezier(.2,.8,.2,1);
+  }
+  .sbz-cta__btn:hover .sbz-cta__icon,
+  .sbz-cta__btn:focus-visible .sbz-cta__icon{transform:translateX(6px)}
+
+  @media (prefers-reduced-motion:reduce){
+    .sbz-cta__btn,.sbz-cta__btn::before,.sbz-cta__icon{transition:none}
+  }
+
+  /* Container menor: empilha título e botão */
+  @media (max-width:900px){
+    .sbz-cta{
+      flex-direction:column;
+      gap:32px;
+      padding:28px 24px;
+      text-align:center;
+    }
+    .sbz-cta__title-wrap{flex:0 0 auto;width:100%}
+    .sbz-cta__btn{width:100%;max-width:360px}
+  }
+  @media (max-width:480px){
+    .sbz-cta__title,.sbz-cta__canvas{width:100%}
+    .sbz-cta__title{font-size:34px}
+    .sbz-cta__canvas{height:60px}
+    .sbz-cta__btn{font-size:14px;padding:18px 20px 18px 24px}
+  }
+</style>
+
+<div class="sbz-cta">
+  <div class="sbz-cta__title-wrap">
+    <div class="sbz-cta__title-inner">
+      <canvas class="sbz-cta__canvas" id="sbz-cta-canvas" layoutsubtree>
+        <div drawable style="position:relative;width:100%;height:100%">
+          <p class="sbz-cta__title">Nos vemos no Connection 2027!</p>
+        </div>
+      </canvas>
+    </div>
+  </div>
+
+  <a class="sbz-cta__btn" href="https://chat.whatsapp.com/LINK-OFICIAL-DO-GRUPO" target="_blank" rel="noopener">
+    <span>Entrar no grupo do evento</span>
+    <svg class="sbz-cta__icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <path d="M6 7l7 7-7 7M12 7l7 7-7 7M18 7l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</div>
+
+<script type="module">
+/* ---------- Shader "Chromatic metal" (Figma) – WGSL copiado sem alterações ---------- */
+function finiteNumber(value, fallback) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : fallback;
+}
+function numberParam(params, name, fallback) {
+  return finiteNumber(params[name], fallback);
+}
+function writeGradientParam(data, params, name, fallback) {
+  const value = params[name];
+  const stops = value && Array.isArray(value.stops) && value.stops.length > 0 ? value.stops : fallback;
+  const count = Math.min(stops.length, 8);
+  data.fill(0, 0, 41);
+  for (let i = 0; i < count; i++) {
+    const stop = stops[i];
+    const color = stop && stop.color;
+    data[i * 4] = finiteNumber(color && color.r, 0);
+    data[i * 4 + 1] = finiteNumber(color && color.g, 0);
+    data[i * 4 + 2] = finiteNumber(color && color.b, 0);
+    data[i * 4 + 3] = finiteNumber(color && color.a, 1);
+    data[32 + i] = finiteNumber(stop && stop.position, 0);
+  }
+  data[40] = count;
+}
+function writeBufferIfChanged(device, buffer, data, lastData) {
+  let changed = false;
+  for (let i = 0; i < data.length; i++) {
+    if (!Object.is(data[i], lastData[i])) { changed = true; break; }
+  }
+  if (changed) {
+    device.queue.writeBuffer(buffer, 0, data);
+    lastData.set(data);
+  }
+}
+
+function setup(device, frame) {
+  const vertexWGSL = `
+struct VsIn {
+  @location(0) pos: vec2f,
+  @location(1) uv: vec2f,
+};
+
+struct VsOut {
+  @builtin(position) position: vec4f,
+  @location(0) uv: vec2f,
+};
+
+@vertex
+fn vs_main(in: VsIn) -> VsOut {
+  var out: VsOut;
+  out.position = vec4f(in.pos, 0.0, 1.0);
+  out.uv = in.uv;
+  return out;
+}
+`;
+  const blurWGSL = `
+struct BlurUniforms {
+  sigma: f32,
+  texelW: f32,
+  texelH: f32,
+  pad: f32,
+};
+
+@group(0) @binding(0) var<uniform> u: BlurUniforms;
+@group(0) @binding(1) var samp: sampler;
+@group(0) @binding(2) var inputTex: texture_2d<f32>;
+
+struct VsOut {
+  @builtin(position) position: vec4f,
+  @location(0) uv: vec2f,
+};
+
+fn gauss(x: f32, s: f32) -> f32 {
+  return exp(-0.5 * (x / s) * (x / s));
+}
+
+@fragment
+fn h_fs(in: VsOut) -> @location(0) vec4f {
+  let sig = max(u.sigma, 0.001);
+  let r = min(i32(ceil(sig * 3.0)), 32);
+  var weightSum = 0.0;
+  var accumulated = 0.0;
+  for (var i = -r; i <= r; i = i + 1) {
+    let p = in.uv + vec2f(f32(i) * u.texelW, 0.0);
+    let inBounds = step(vec2f(0.0), p) * step(p, vec2f(1.0));
+    let alpha =
+      textureSampleLevel(
+        inputTex,
+        samp,
+        clamp(p, vec2f(0.0), vec2f(1.0)),
+        0.0,
+      ).a * (inBounds.x * inBounds.y);
+    let weight = gauss(f32(i), sig);
+    accumulated += alpha * weight;
+    weightSum += weight;
+  }
+  let value = accumulated / weightSum;
+  return vec4f(value, value, value, value);
+}
+
+@fragment
+fn v_fs(in: VsOut) -> @location(0) vec4f {
+  let sig = max(u.sigma, 0.001);
+  let r = min(i32(ceil(sig * 3.0)), 32);
+  var weightSum = 0.0;
+  var accumulated = 0.0;
+  for (var i = -r; i <= r; i = i + 1) {
+    let p = in.uv + vec2f(0.0, f32(i) * u.texelH);
+    let inBounds = step(vec2f(0.0), p) * step(p, vec2f(1.0));
+    let alpha =
+      textureSampleLevel(
+        inputTex,
+        samp,
+        clamp(p, vec2f(0.0), vec2f(1.0)),
+        0.0,
+      ).r * (inBounds.x * inBounds.y);
+    let weight = gauss(f32(i), sig);
+    accumulated += alpha * weight;
+    weightSum += weight;
+  }
+  let value = accumulated / weightSum;
+  return vec4f(value, value, value, value);
+}
+`;
+  const mainWGSL = `
+diagnostic(off,derivative_uniformity);
+struct Uniforms {
+  chromeGradient_c0: vec4f,
+  chromeGradient_c1: vec4f,
+  chromeGradient_c2: vec4f,
+  chromeGradient_c3: vec4f,
+  chromeGradient_c4: vec4f,
+  chromeGradient_c5: vec4f,
+  chromeGradient_c6: vec4f,
+  chromeGradient_c7: vec4f,
+  chromeGradient_pos0: vec4f,
+  chromeGradient_pos1: vec4f,
+  chromeGradient_count: f32,
+  heightIntensity: f32,
+  chromaSeparation: f32,
+  noiseScale: f32,
+  phase: f32,
+  evolution: f32,
+  noiseAngle: f32,
+  stretch: f32,
+  gradientOffset: f32,
+  gradientRepeats: f32,
+  roughness: f32,
+  pad0: f32,
+};
+
+@group(0) @binding(0) var<uniform> u: Uniforms;
+@group(0) @binding(1) var samp: sampler;
+@group(0) @binding(2) var inputTex: texture_2d<f32>;
+@group(0) @binding(3) var blurredAlphaTex: texture_2d<f32>;
+
+struct VsOut {
+  @builtin(position) position: vec4f,
+  @location(0) uv: vec2f,
+};
+
+fn sampleInput(p: vec2f) -> vec4f {
+  return textureSampleLevel(
+    inputTex,
+    samp,
+    clamp(p, vec2f(0.0), vec2f(1.0)),
+    0.0,
+  );
+}
+
+fn chromeStopPos(i: u32) -> f32 {
+  let lane = i & 3u;
+  if (i < 4u) {
+    return u.chromeGradient_pos0[lane];
+  }
+  return u.chromeGradient_pos1[lane];
+}
+
+fn chromeGradientRamp(t: f32) -> vec4f {
+  let colors = array<vec4f, 8>(
+    u.chromeGradient_c0,
+    u.chromeGradient_c1,
+    u.chromeGradient_c2,
+    u.chromeGradient_c3,
+    u.chromeGradient_c4,
+    u.chromeGradient_c5,
+    u.chromeGradient_c6,
+    u.chromeGradient_c7,
+  );
+  let count = u32(u.chromeGradient_count);
+  if (count == 0u) {
+    return vec4f(0.0);
+  }
+  if (count == 1u || t <= chromeStopPos(0u)) {
+    return colors[0];
+  }
+  let last = count - 1u;
+  if (t >= chromeStopPos(last)) {
+    return colors[last];
+  }
+  for (var i = 0u; i < last; i = i + 1u) {
+    let p1 = chromeStopPos(i + 1u);
+    if (t <= p1) {
+      let p0 = chromeStopPos(i);
+      return mix(
+        colors[i],
+        colors[i + 1u],
+        (t - p0) / max(p1 - p0, 1e-5),
+      );
+    }
+  }
+  return colors[last];
+}
+
+fn aaGradientLookup(rawH: f32, offset: f32) -> vec4f {
+  let shifted = rawH + offset;
+  let wrapped = fract(shifted);
+  let filterWidth = max(fwidth(shifted), 1e-5);
+  let distance = min(wrapped, 1.0 - wrapped);
+  let blend = saturate(distance / (filterWidth * 1.5));
+  let other = select(wrapped + 1.0, wrapped - 1.0, wrapped > 0.5);
+  return mix(
+    chromeGradientRamp(clamp(other, 0.0, 1.0)),
+    chromeGradientRamp(wrapped),
+    blend,
+  );
+}
+
+const TILE_PERIOD: f32 = 8.0;
+const OCTAVES: u32 = 1u;
+
+fn hash3(p: vec3f) -> f32 {
+  var q = p;
+  q = fract(q * vec3f(0.1031, 0.1030, 0.0973));
+  q += dot(q, q.yxz + 33.33);
+  return fract((q.x + q.y) * q.z);
+}
+
+fn smoothNoise3T(p: vec3f, tilePeriod: f32) -> f32 {
+  let i = floor(p);
+  let f = fract(p);
+  let s = f * f * (3.0 - 2.0 * f);
+  let wx0 = i.x - floor(i.x / tilePeriod) * tilePeriod;
+  let x1w = (i.x + 1.0) - floor((i.x + 1.0) / tilePeriod) * tilePeriod;
+  let wz0 = i.z - floor(i.z / tilePeriod) * tilePeriod;
+  let z1w = (i.z + 1.0) - floor((i.z + 1.0) / tilePeriod) * tilePeriod;
+  let y0 = i.y;
+  let y1 = i.y + 1.0;
+  let v000 = hash3(vec3f(wx0, y0, wz0));
+  let v100 = hash3(vec3f(x1w, y0, wz0));
+  let v010 = hash3(vec3f(wx0, y1, wz0));
+  let v110 = hash3(vec3f(x1w, y1, wz0));
+  let v001 = hash3(vec3f(wx0, y0, z1w));
+  let v101 = hash3(vec3f(x1w, y0, z1w));
+  let v011 = hash3(vec3f(wx0, y1, z1w));
+  let v111 = hash3(vec3f(x1w, y1, z1w));
+  return mix(
+    mix(mix(v000, v100, s.x), mix(v010, v110, s.x), s.y),
+    mix(mix(v001, v101, s.x), mix(v011, v111, s.x), s.y),
+    s.z,
+  );
+}
+
+fn fbm3(p: vec3f) -> f32 {
+  var value = 0.0;
+  var amplitude = 0.5;
+  var frequency = 1.0;
+  var totalAmplitude = 0.0;
+  for (var i = 0u; i < 8u; i = i + 1u) {
+    if (i >= OCTAVES) {
+      break;
+    }
+    totalAmplitude += amplitude;
+    value += amplitude * smoothNoise3T(
+      p * frequency,
+      TILE_PERIOD * frequency,
+    );
+    amplitude *= 0.5;
+    frequency *= 2.0;
+  }
+  return value / max(totalAmplitude, 1e-5);
+}
+
+fn heightAt(np: vec3f, hi: f32, edgeMask: f32, eps: f32) -> f32 {
+  let noiseValue = fbm3(np);
+  let dnx = fbm3(np + vec3f(eps, 0.0, 0.0)) -
+    fbm3(np - vec3f(eps, 0.0, 0.0));
+  let dny = fbm3(np + vec3f(0.0, eps, 0.0)) -
+    fbm3(np - vec3f(0.0, eps, 0.0));
+  return mix(0.5, noiseValue * edgeMask, hi) +
+    (dnx + dny) * 0.5 * hi * 0.3;
+}
+
+@fragment
+fn fs_main(@location(0) uv: vec2f) -> @location(0) vec4f {
+  let heightIntensity = u.heightIntensity / 100.0;
+  let chromaSeparation = u.chromaSeparation / 1000.0;
+  let noiseScale = max(0.01, u.noiseScale / 100.0);
+  let stretchY = max(0.01, u.stretch / 100.0);
+  let gradientOffset = u.gradientOffset / 100.0;
+  let phaseX = (u.phase / 100.0) * TILE_PERIOD;
+  let evolutionZ = (u.evolution / 100.0) * TILE_PERIOD;
+
+  let angle = u.noiseAngle * (3.14159265 / 180.0);
+  let cosA = cos(angle);
+  let sinA = sin(angle);
+  let centeredUv = uv - vec2f(0.5);
+  let rotatedUv = vec2f(
+    centeredUv.x * cosA - centeredUv.y * sinA,
+    centeredUv.x * sinA + centeredUv.y * cosA,
+  ) + vec2f(0.5);
+
+  let inputColor = sampleInput(uv);
+  let edgeMask = textureSampleLevel(
+    blurredAlphaTex,
+    samp,
+    uv,
+    0.0,
+  ).r;
+
+  let noiseBase = vec3f(
+    rotatedUv.x / noiseScale + phaseX,
+    rotatedUv.y / noiseScale / stretchY,
+    0.37 + evolutionZ,
+  );
+
+  let eps = 0.005 / noiseScale;
+  let nx = fbm3(noiseBase + vec3f(eps, 0.0, 0.0)) -
+    fbm3(noiseBase - vec3f(eps, 0.0, 0.0));
+  let ny = fbm3(noiseBase + vec3f(0.0, eps, 0.0)) -
+    fbm3(noiseBase - vec3f(0.0, eps, 0.0));
+
+  let heightCenter =
+    mix(0.5, fbm3(noiseBase) * edgeMask, heightIntensity) +
+    (nx + ny) * 0.5 * heightIntensity * 0.3;
+
+  let normalDir = normalize(vec2f(nx, ny) + vec2f(1e-6));
+  let uvShift = normalDir * chromaSeparation;
+
+  let roughAmount = max(0.0, u.roughness / 100.0);
+  var roughDelta = 0.0;
+  if (roughAmount > 0.0) {
+    let roughFrequency = 1000.0;
+    let roughPosition = vec3f(
+      rotatedUv.x * roughFrequency,
+      rotatedUv.y * roughFrequency,
+      0.37 * roughFrequency,
+    );
+    let roughNoise = smoothNoise3T(
+      roughPosition,
+      TILE_PERIOD * roughFrequency,
+    );
+    roughDelta =
+      (roughNoise * 2.0 - 1.0) * roughAmount * 0.05 * edgeMask;
+  }
+
+  let hR = clamp(
+    heightAt(
+      noiseBase + vec3f(uvShift, 0.0),
+      heightIntensity,
+      edgeMask,
+      eps,
+    ) + roughDelta,
+    0.0,
+    1.0,
+  );
+  let hG = clamp(heightCenter + roughDelta, 0.0, 1.0);
+  let hB = clamp(
+    heightAt(
+      noiseBase - vec3f(uvShift, 0.0),
+      heightIntensity,
+      edgeMask,
+      eps,
+    ) + roughDelta,
+    0.0,
+    1.0,
+  );
+
+  let aaSpread = 1.0;
+  let numSamples = 4u;
+  let gradientRepeats = max(1.0, floor(u.gradientRepeats + 0.5));
+  let dhR = fwidth(hR) * aaSpread * gradientRepeats;
+  let dhG = fwidth(hG) * aaSpread * gradientRepeats;
+  let dhB = fwidth(hB) * aaSpread * gradientRepeats;
+  var accumulatedR = vec4f(0.0);
+  var accumulatedG = vec4f(0.0);
+  var accumulatedB = vec4f(0.0);
+  for (var sampleIndex = 0u; sampleIndex < 16u; sampleIndex++) {
+    if (sampleIndex >= numSamples) {
+      break;
+    }
+    let jitter =
+      (f32(sampleIndex) + 0.5) / f32(numSamples) - 0.5;
+    accumulatedR += aaGradientLookup(
+      hR * gradientRepeats + jitter * dhR,
+      gradientOffset,
+    );
+    accumulatedG += aaGradientLookup(
+      hG * gradientRepeats + jitter * dhG,
+      gradientOffset,
+    );
+    accumulatedB += aaGradientLookup(
+      hB * gradientRepeats + jitter * dhB,
+      gradientOffset,
+    );
+  }
+  let inverseSamples = 1.0 / f32(numSamples);
+  let colorR = accumulatedR * inverseSamples;
+  let colorG = accumulatedG * inverseSamples;
+  let colorB = accumulatedB * inverseSamples;
+
+  let chromeColor = vec4f(colorR.r, colorG.g, colorB.b, inputColor.a);
+  let maskThreshold = 0.5;
+  let softAlpha = smoothstep(
+    maskThreshold - 0.05,
+    maskThreshold + 0.05,
+    edgeMask,
+  );
+  return vec4f(chromeColor.rgb * softAlpha, softAlpha);
+}
+`;
+  frame.state.vertexModule = device.createShaderModule({ code: vertexWGSL });
+  frame.state.blurModule = device.createShaderModule({ code: blurWGSL });
+  frame.state.mainModule = device.createShaderModule({ code: mainWGSL });
+  frame.state.vertexBuffers = [{
+    arrayStride: 16,
+    attributes: [
+      { shaderLocation: 0, format: "float32x2", offset: 0 },
+      { shaderLocation: 1, format: "float32x2", offset: 8 },
+    ],
+  }];
+  frame.state.hPipeline = device.createRenderPipeline({
+    layout: "auto",
+    vertex: { module: frame.state.vertexModule, entryPoint: "vs_main", buffers: frame.state.vertexBuffers },
+    fragment: { module: frame.state.blurModule, entryPoint: "h_fs", targets: [{ format: "rgba8unorm" }] },
+    primitive: { topology: "triangle-list" },
+  });
+  frame.state.vPipeline = device.createRenderPipeline({
+    layout: "auto",
+    vertex: { module: frame.state.vertexModule, entryPoint: "vs_main", buffers: frame.state.vertexBuffers },
+    fragment: { module: frame.state.blurModule, entryPoint: "v_fs", targets: [{ format: "rgba8unorm" }] },
+    primitive: { topology: "triangle-list" },
+  });
+  frame.state.mainPipeline = null;
+  frame.state.mainPipelineFormat = null;
+  frame.state.quad = device.createBuffer({ size: 6 * 4 * 4, usage: GPUBufferUsage.VERTEX, mappedAtCreation: true });
+  new Float32Array(frame.state.quad.getMappedRange()).set([
+    -1, -1, 0, 1,
+    1, -1, 1, 1,
+    -1, 1, 0, 0,
+    -1, 1, 0, 0,
+    1, -1, 1, 1,
+    1, 1, 1, 0,
+  ]);
+  frame.state.quad.unmap();
+  frame.state.blurUniformBuf = device.createBuffer({ size: 16, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST });
+  frame.state.blurUniformData = new Float32Array(4);
+  frame.state.lastBlurUniformData = new Float32Array(4);
+  frame.state.lastBlurUniformData.fill(Number.NaN);
+  frame.state.mainUniformBuf = device.createBuffer({ size: 208, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST });
+  frame.state.mainUniformData = new Float32Array(52);
+  frame.state.lastMainUniformData = new Float32Array(52);
+  frame.state.lastMainUniformData.fill(Number.NaN);
+  frame.state.sampler = device.createSampler({
+    magFilter: "linear", minFilter: "linear",
+    addressModeU: "clamp-to-edge", addressModeV: "clamp-to-edge",
+  });
+  frame.state.placeholder = device.createTexture({
+    size: [1, 1, 1], format: "rgba8unorm",
+    usage: GPUTextureUsage.TEXTURE_BINDING | GPUTextureUsage.COPY_DST,
+  });
+  device.queue.writeTexture({ texture: frame.state.placeholder }, new Uint8Array([0, 0, 0, 0]), { bytesPerRow: 4 }, { width: 1, height: 1, depthOrArrayLayers: 1 });
+  frame.state.placeholderView = frame.state.placeholder.createView();
+  frame.state.defaultGradient = [
+    { position: 0.18, color: { r: 1.0, g: 1.0, b: 1.0, a: 1 } },
+    { position: 0.43, color: { r: 0.278, g: 0.302, b: 0.329, a: 1 } },
+    { position: 0.43, color: { r: 1.0, g: 1.0, b: 1.0, a: 1 } },
+    { position: 0.55, color: { r: 1.0, g: 1.0, b: 1.0, a: 1 } },
+    { position: 0.55, color: { r: 0.247, g: 0.247, b: 0.251, a: 1 } },
+    { position: 0.70, color: { r: 0.247, g: 0.247, b: 0.251, a: 1 } },
+    { position: 0.70, color: { r: 1.0, g: 1.0, b: 1.0, a: 1 } },
+  ];
+  frame.state.intermediate1 = null;
+  frame.state.intermediate2 = null;
+  frame.state.intermediate1View = null;
+  frame.state.intermediate2View = null;
+  frame.state.intermediateW = 0;
+  frame.state.intermediateH = 0;
+  frame.state.inputTexture = frame.state.placeholder;
+  frame.state.inputView = frame.state.placeholderView;
+  frame.state.outputTexture = null;
+  frame.state.outputView = null;
+  frame.state.hBindGroup = null;
+  frame.state.vBindGroup = null;
+  frame.state.mainBindGroup = null;
+}
+
+function render(device, frame) {
+  const params = frame.params || {};
+  const output = frame.output || {};
+  const width = Math.max(1, finiteNumber(output.physicalWidth ?? output.width, 1));
+  const height = Math.max(1, finiteNumber(output.physicalHeight ?? output.height, 1));
+  if (frame.state.intermediate1 == null || frame.state.intermediateW !== width || frame.state.intermediateH !== height) {
+    if (frame.state.intermediate1 != null) frame.state.intermediate1.destroy();
+    if (frame.state.intermediate2 != null) frame.state.intermediate2.destroy();
+    const mk = () => device.createTexture({
+      size: [width, height, 1], format: "rgba8unorm",
+      usage: GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.TEXTURE_BINDING,
+    });
+    frame.state.intermediate1 = mk();
+    frame.state.intermediate2 = mk();
+    frame.state.intermediate1View = frame.state.intermediate1.createView();
+    frame.state.intermediate2View = frame.state.intermediate2.createView();
+    frame.state.intermediateW = width;
+    frame.state.intermediateH = height;
+    frame.state.vBindGroup = null;
+    frame.state.mainBindGroup = null;
+  }
+  const outputFormat = frame.output.format;
+  if (frame.state.mainPipeline == null || frame.state.mainPipelineFormat !== outputFormat) {
+    frame.state.mainPipeline = device.createRenderPipeline({
+      layout: "auto",
+      vertex: { module: frame.state.vertexModule, entryPoint: "vs_main", buffers: frame.state.vertexBuffers },
+      fragment: { module: frame.state.mainModule, entryPoint: "fs_main", targets: [{ format: outputFormat }] },
+      primitive: { topology: "triangle-list" },
+    });
+    frame.state.mainPipelineFormat = outputFormat;
+    frame.state.mainBindGroup = null;
+  }
+  const inputTexture = frame.input != null ? frame.input : frame.state.placeholder;
+  if (frame.state.inputTexture !== inputTexture) {
+    frame.state.inputTexture = inputTexture;
+    frame.state.inputView = inputTexture === frame.state.placeholder ? frame.state.placeholderView : inputTexture.createView();
+    frame.state.hBindGroup = null;
+    frame.state.mainBindGroup = null;
+  }
+  if (frame.state.outputTexture !== frame.output) {
+    frame.state.outputTexture = frame.output;
+    frame.state.outputView = frame.output.createView();
+  }
+  const blurSigma = numberParam(params, "blurStrength", 7.5);
+  const blurUniformData = frame.state.blurUniformData;
+  blurUniformData[0] = blurSigma;
+  blurUniformData[1] = frame.renderScale / width;
+  blurUniformData[2] = frame.renderScale / height;
+  blurUniformData[3] = 0;
+  writeBufferIfChanged(device, frame.state.blurUniformBuf, blurUniformData, frame.state.lastBlurUniformData);
+  const m = frame.state.mainUniformData;
+  writeGradientParam(m, params, "chromeGradient", frame.state.defaultGradient);
+  m[41] = numberParam(params, "heightIntensity", 100);
+  m[42] = numberParam(params, "chromaSepR", 10);
+  m[43] = numberParam(params, "noiseScale", 50);
+  m[44] = numberParam(params, "phase", 0);
+  m[45] = numberParam(params, "evolution", 0);
+  m[46] = numberParam(params, "noiseAngle", 30);
+  m[47] = numberParam(params, "stretch", 200);
+  m[48] = numberParam(params, "gradientOffset", 0);
+  m[49] = numberParam(params, "gradientRepeats", 2);
+  m[50] = numberParam(params, "roughness", 0);
+  m[51] = 0;
+  writeBufferIfChanged(device, frame.state.mainUniformBuf, m, frame.state.lastMainUniformData);
+  if (frame.state.hBindGroup == null) {
+    frame.state.hBindGroup = device.createBindGroup({
+      layout: frame.state.hPipeline.getBindGroupLayout(0),
+      entries: [
+        { binding: 0, resource: { buffer: frame.state.blurUniformBuf } },
+        { binding: 1, resource: frame.state.sampler },
+        { binding: 2, resource: frame.state.inputView },
+      ],
+    });
+  }
+  if (frame.state.vBindGroup == null) {
+    frame.state.vBindGroup = device.createBindGroup({
+      layout: frame.state.vPipeline.getBindGroupLayout(0),
+      entries: [
+        { binding: 0, resource: { buffer: frame.state.blurUniformBuf } },
+        { binding: 1, resource: frame.state.sampler },
+        { binding: 2, resource: frame.state.intermediate1View },
+      ],
+    });
+  }
+  if (frame.state.mainBindGroup == null) {
+    frame.state.mainBindGroup = device.createBindGroup({
+      layout: frame.state.mainPipeline.getBindGroupLayout(0),
+      entries: [
+        { binding: 0, resource: { buffer: frame.state.mainUniformBuf } },
+        { binding: 1, resource: frame.state.sampler },
+        { binding: 2, resource: frame.state.inputView },
+        { binding: 3, resource: frame.state.intermediate2View },
+      ],
+    });
+  }
+  const encoder = device.createCommandEncoder();
+  const pass = (view, pipeline, bindGroup) => {
+    const p = encoder.beginRenderPass({
+      colorAttachments: [{ view, loadOp: "clear", clearValue: { r: 0, g: 0, b: 0, a: 0 }, storeOp: "store" }],
+    });
+    p.setPipeline(pipeline);
+    p.setBindGroup(0, bindGroup);
+    p.setVertexBuffer(0, frame.state.quad);
+    p.draw(6);
+    p.end();
+  };
+  pass(frame.state.intermediate1View, frame.state.hPipeline, frame.state.hBindGroup);
+  pass(frame.state.intermediate2View, frame.state.vPipeline, frame.state.vBindGroup);
+  pass(frame.state.outputView, frame.state.mainPipeline, frame.state.mainBindGroup);
+  device.queue.submit([encoder.finish()]);
+}
+
+/* ---------- Parâmetros do efeito (iguais ao Figma) ---------- */
+const PARAMS = {
+  evolution: 0,
+  chromeGradient: {
+    stops: [
+      { position: 0.18, color: { r: 1, g: 1, b: 1, a: 1 } },
+      { position: 0.43, color: { r: 0.278, g: 0.302, b: 0.329, a: 1 } },
+      { position: 0.43, color: { r: 1, g: 1, b: 1, a: 1 } },
+      { position: 0.55, color: { r: 1, g: 1, b: 1, a: 1 } },
+      { position: 0.55, color: { r: 0.247, g: 0.247, b: 0.251, a: 1 } },
+      { position: 0.70, color: { r: 0.247, g: 0.247, b: 0.251, a: 1 } },
+      { position: 0.70, color: { r: 1, g: 1, b: 1, a: 1 } },
+    ],
+  },
+  blurStrength: 1,
+  phase: 0,
+  gradientOffset: 0,
+  noiseScale: 46,
+  chromaSepR: 10,
+  heightIntensity: 47,
+  roughness: 29,
+  noiseAngle: 30,
+  stretch: 200,
+  gradientRepeats: 2,
+};
+
+/* ---------- Runtime mínimo (HTML-in-Canvas + WebGPU) ---------- */
+function unwrap(canvas) {
+  // Fallback: mostra o texto normal (branco) no lugar do canvas.
+  const text = canvas.querySelector('.sbz-cta__title');
+  if (text && canvas.parentNode) canvas.replaceWith(text);
+}
+
+async function init(canvas) {
+  try {
+    if (!navigator.gpu) throw new Error('WebGPU unsupported.');
+    const adapter = await navigator.gpu.requestAdapter();
+    if (!adapter) throw new Error('No WebGPU adapter.');
+    const device = await adapter.requestDevice();
+    const queue = device.queue;
+    if (!('drawElementImageToTexture' in queue) && !('copyElementImageToTexture' in queue)) {
+      throw new Error('HTML-in-Canvas is not supported.');
+    }
+    const content = canvas.querySelector('[drawable]');
+    const context = canvas.getContext('webgpu');
+    if (!context) throw new Error('No WebGPU context.');
+    const format = 'rgba8unorm';
+    context.configure({ device, format, alphaMode: 'premultiplied' });
+
+    const runtime = { input: null, output: null, renderScale: 1, dirty: true, ready: false };
+    const shader = { state: {}, params: PARAMS };
+
+    const size = () => {
+      const r = canvas.getBoundingClientRect();
+      const max = device.limits.maxTextureDimension2D;
+      const scale = Math.min(window.devicePixelRatio || 1, max / r.width, max / r.height);
+      canvas.width = Math.max(Math.round(r.width * scale), 1);
+      canvas.height = Math.max(Math.round(r.height * scale), 1);
+      runtime.renderScale = scale;
+      if (runtime.input) runtime.input.destroy();
+      runtime.input = device.createTexture({
+        size: [canvas.width, canvas.height, 1], format,
+        usage: GPUTextureUsage.TEXTURE_BINDING | GPUTextureUsage.COPY_DST | GPUTextureUsage.RENDER_ATTACHMENT,
+      });
+      runtime.dirty = true;
+    };
+    size();
+
+    const frame = () => ({
+      gpu: { device, context, format },
+      input: runtime.input,
+      output: runtime.output,
+      time: 0, deltaTime: 0, frame: 0,
+      mousePosition: { x: 0, y: 0, down: false },
+      renderScale: runtime.renderScale,
+      params: PARAMS,
+      state: shader.state,
+    });
+
+    setup(device, frame());
+    runtime.ready = true;
+
+    const copyInput = () => {
+      if (queue.drawElementImageToTexture) {
+        try {
+          queue.drawElementImageToTexture(
+            { source: content },
+            { texture: runtime.input, size: { width: runtime.input.width, height: runtime.input.height } }
+          );
+          return;
+        } catch (e) { if (!queue.copyElementImageToTexture) throw e; }
+      }
+      try {
+        queue.copyElementImageToTexture(
+          { source: content },
+          { destination: { texture: runtime.input }, width: runtime.input.width, height: runtime.input.height }
+        );
+      } catch {
+        queue.copyElementImageToTexture(content, runtime.input.width, runtime.input.height, { texture: runtime.input });
+      }
+    };
+
+    const paint = () => {
+      if (!runtime.ready) return;
+      try {
+        if (runtime.dirty) { copyInput(); runtime.dirty = false; }
+        runtime.output = context.getCurrentTexture();
+        render(device, frame());
+      } catch (e) {
+        // Falha transitória (ex.: primeiro paint ainda sem registro) – tenta no próximo.
+        console.warn('Chrome effect: failed to render', e);
+      }
+    };
+
+    canvas.onpaint = (ev) => {
+      if (ev.changedElements && ev.changedElements.length > 0) runtime.dirty = true;
+      paint();
+    };
+
+    // Re-renderiza ao redimensionar (mantém nitidez em telas HiDPI).
+    new ResizeObserver(() => {
+      size();
+      canvas.requestPaint();
+    }).observe(canvas);
+
+    // Garante o primeiro paint depois que a fonte carregar.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { runtime.dirty = true; canvas.requestPaint(); });
+    canvas.requestPaint();
+  } catch (e) {
+    console.warn('Chrome effect disabled, using plain text fallback:', e);
+    unwrap(canvas);
+  }
+}
+
+const canvas = document.getElementById('sbz-cta-canvas');
+if (canvas) {
+  // Sem WebGPU nem HTML-in-Canvas, o conteúdo do canvas não é desenhado: troca já pelo texto normal.
+  if (!navigator.gpu || !('requestPaint' in canvas)) unwrap(canvas);
+  else init(canvas);
+}
+</script>
